@@ -1,0 +1,19 @@
+/* Coloured boxes */
+.chapsumm {
+  background-color: rgb(247, 247, 225);
+  padding: 10px;
+}
+.lookbox {
+  background-color: rgb(247, 247, 225);
+  padding: 10px;
+}
+
+
+/* Tables */
+td {
+  white-space: nowrap;
+}
+table {
+  width: 90%;
+  overflow-x: visible;
+}

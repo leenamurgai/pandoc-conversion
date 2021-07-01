@@ -1,0 +1,100 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{fullpage}
+\usepackage{footmisc} % To refer to the same footnote again with \footref{}
+\usepackage{hyperref}
+\usepackage{url}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage[sectionbib]{natbib}
+\usepackage{chapterbib}
+\renewcommand{\bibname}{References}
+\usepackage[nottoc]{tocbibind}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{amsfonts} % To use \mathbb{}
+\usepackage{amsmath}
+\usepackage{amstext}
+\usepackage{dsfont}
+\usepackage{bbm}
+                
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{wasysym}
+\usepackage{multirow}
+%\usepackage{wrapfig}
+\usepackage[figuresright]{rotating}
+%\usepackage{afterpage}
+\usepackage{bigstrut}
+%\usepackage{topcapt}
+%\usepackage{float}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% List styles
+
+\usepackage{enumitem}
+\setlist{itemsep=0mm}
+%\setlist[description]{font = \normalfont,
+%                      leftmargin = 0em,
+%                      itemindent = 1.5em,
+%                      labelwidth = 0em,
+%                      labelsep = 0em}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Code listings
+
+\usepackage[T1]{fontenc}
+\usepackage{listings}
+\lstset{basicstyle = \ttfamily}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shaded boxes
+
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage{tcolorbox}
+%\definecolor{muteddkblue     }{cmyk}{0.77, 0.52, 0.33, 0.09}
+%\definecolor{mutedltblue     }{cmyk}{0.5 , 0   , 0   , 0.5 }
+%\definecolor{ltblue          }{cmyk}{0.45, 0   , 0   , 0.2 }
+%\definecolor{veryltblue      }{cmyk}{0.2 , 0   , 0   , 0.1 }
+%\definecolor{shadecolor      }{cmyk}{0.1 , 0   , 0   , 0.15}
+%\definecolor{mutedltyellow   }{cmyk}{0   , 0   , 0.09, 0.03}
+%\definecolor{mutedyellow     }{cmyk}{0   , 0   , 0.1 , 0.03}
+%\definecolor{muteddkyellow   }{cmyk}{0   , 0   , 1   , 0.2 }
+%\definecolor{newmuteddkyellow}{cmyk}{0   , 0   , 0.2 , 1,  }
+%\definecolor{ltgray          }{cmyk}{0   , 0   , 0   , 0.1 }
+%\definecolor{medgray         }{cmyk}{0   , 0   , 0   , 0.4 }
+%\definecolor{medltgray       }{cmyk}{0   , 0   , 0   , 0.35}
+%\definecolor{dkgray          }{cmyk}{0   , 0   , 0   , 0.7 }
+%\definecolor{blackorblue     }{cmyk}{0   , 0   , 0   , 0   }
+%\definecolor{lmr}{RGB}{192,80 ,77 }
+%\definecolor{lmg}{RGB}{24 ,145,27 }
+%\definecolor{lmb}{RGB}{79 ,129,189}
+\definecolor{mutedltyellow}{RGB}{247, 247, 225}% also #F7F7E1
+\definecolor{muteddkblue}{RGB}{53, 111, 155}% also #356F9B
+
+\newcommand{\cstitle}[1]{\large\textbf{\color{muteddkblue} #1}\normalsize}
+\newcommand{\lbtitle}[1]{\textbf{\color{muteddkblue} #1}\par\normalsize\vspace{5pt}}
+
+\newtcolorbox{chapsumm}{
+    %toptitle = 6pt,
+    %title = \large\textbf{This chapter at a glance},
+    %coltitle = muteddkblue,
+    %colbacktitle = mutedltyellow,
+    colframe = mutedltyellow,
+    colback = mutedltyellow,
+    sharp corners = all,
+    left skip = 0.1\textwidth,
+    right skip = 0.1\textwidth,
+    after skip = 1cm}
+
+\newtcolorbox{lookbox}{
+    %toptitle = 6pt,
+    %title = \textbf{{#1}},
+    %coltitle = muteddkblue,
+    %colbacktitle = mutedltyellow,
+    colframe = mutedltyellow,
+    colback = mutedltyellow,
+    sharp corners = all,
+    before skip = \baselineskip,
+    after skip = \baselineskip}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

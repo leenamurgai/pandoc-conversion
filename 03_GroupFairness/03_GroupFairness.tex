@@ -1,0 +1,851 @@
+\chapter{Group Fairness} \label{ch_GroupFairness}
+
+\begin{chapsumm}
+\cstitle{This chapter at a glance}
+\begin{itemize}
+\item Group fairness metrics
+\item Using AIF360 to compute group fairness metrics
+\item Incompatibility of group fairness criteria
+\end{itemize}
+\end{chapsumm}
+%
+\noindent
+%
+The term \emph{group fairness} is used to describe a class of metrics that are used to measure discrimination or bias in a given decision process (algorithmic or human). In this chapter we will introduce the different types of group fairness metrics in a structured way. We will compare and analyse the different types of metrics, in terms of their meaning and implications. For classification problems, we'll derive results that show how the various fairness metrics discussed, can in fact be incompatible in certain cases; that is to say, they cannot be satisfied simultaneously except in some degenerate cases. By the end of this chapter, we will have a deep understanding of the various group fairness metrics, thus enabling us to make educated choices about which metrics to (and not to) use for any given problem. In addition to discussing group fairness, we'll get started with AIF360. We'll introduce it and use it to compute the group fairness metrics in Jupyter Notebook on a dataset. Let's get started!
+
+We begin with an overview. Group fairness metrics all stem from the same high level notion of fairness; the idea that some \emph{property} should be balanced (or equal) across different \emph{subgroups} of a population. The \emph{subgroups} are determined by the values of \emph{protected characteristics} such as gender or race. We also describe these as \emph{sensitive features}. Partitions of the population could be defined by a single protected characteristic or logical conjunctions of multiple sensitive features. For example, if we were considering both race and gender simultaneously, one group of the partition might be Black women, another White men, and so on. The \emph{property} we'll be interested in balancing will be some statistical measure; the particular kind, will depend on our beliefs about what fairness should mean in the context of the problem. Group fairness criteria can be broadly classified into two types; those defined by comparing \emph{outcomes} across groups and those that compare \emph{errors}. In the former case, for a binary classifier (that either accepts or rejects individuals), we would compare acceptance rates; for a regression problem, we might look at the the mean predicted target value. In the latter case, for a binary classifier, we might be more interested in false positive or false negative errors (depending on which kind are more advantageous to the individual); for a regression problem we might be interested in understanding if the process systematically over or under estimates for one group over another and how much by.
+
+Let's look at some concrete examples for classification and discuss a few different interpretations of the definition in each case. Given a process that determines which job applicants make it to the interview stage, \emph{balanced outcomes} across gender would require the probability of being invited to interview (acceptance rate), be the same, regardless of gender. Expressed in a different way, we believe that the acceptance rate should be independent of gender. What about \emph{balanced errors}? We might believe that for a fair decision process, the false discovery rate (the rate at which we incorrectly choose to interview individuals\footnote{For a reminder of confusion matrix metrics, see section \ref{sec_ConfMatMets} of appendix \ref{app_Metrics}}) should be the same for all genders. That is, if we are not unjustly biased in accepting applicants of a particular gender, the false discovery rates should be the same for them all. Or again, put another way, we believe that we are fairly choosing who to interview if the false discovery rate is independent of gender. 
+
+In general group fairness criterion and measures can be derived from independence constraints on the joint distributions of the non-sensitive features $X$, sensitive features, $Z$, the target feature $Y$ and predicted target $\hat{Y}$. For a summary of the notation and conventions we use in this book go to page \pageref{ch_Notation}. Note that for a continuous classification model to be fair for all thresholds, we would replace $\hat{Y}$ with $P$ in the above statement. For brevity (and because it makes the equations a little easier to read) we will express all constraints in terms of $\hat{Y}$, but keep in mind that for a classification model we might want to instead impose it on the score $P$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Balanced outcomes} \label{sec_BalOut}
+
+First we look at fairness constraints that impose independence between the outcome $\hat{Y}$ or target variable $Y$ (depending on if we are interested in assessing the fairness of the data coming out of, or going into, our model respectively) and the sensitive feature, $Z$. We will consider two extremes, one where the variables are unconditionally independent and the other where the variables are conditionally independent given the other features $X$. To return to our example of determining which applicants make it to the next round of interviews, in the first case our fairness constraint requires that the acceptance rate be independent of gender while our second constraint requires that the acceptance rates be independent of gender, all else being equal (also known as the twin test). We will call the criteria independence and conditional independence respectively. Independence can be viewed as addressing disparate impact, since we are only interested in the relationship between the outcome and sensitive feature. Conditional independence has been interpreted as addressing disparate treatment, since if it is not satisfied, it establishes the sensitive feature as being the cause for the disparity in outcomes (assuming $X$ and $Z$ are the only model inputs). We summarise these fairness criteria in Table \ref{tab_FairOutcomes}.
+%
+\begin{table}[h!]
+\centering
+\caption{Fairness constraints on outcomes.}
+\label{tab_FairOutcomes}
+\vspace{10pt}
+\begin{tabular}{|c|c|}
+\hline
+Independence     & Conditional Independence \\
+\hline
+\hline
+$\hat{Y} \bot Z$ & $(\hat{Y} | X) \bot Z$   \\
+\hline
+\end{tabular}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Independence}
+
+Of all the fairness criteria, independence is the most well known and imposes the strongest constraint. It requires the predicted target variable to be (unconditionally) independent of the sensitive feature. In other words, the distribution of the predicted target variable should be the same for all values of the sensitive feature,
+\[
+\hat{Y} \bot Z \quad \Rightarrow \quad \Prob(\hat{y}|z) = \Prob(\hat{y}).
+\]
+Note that we were in fact looking at independence criterion for the 1973 Berkeley admissions example in section \ref{sec_SimpsParadox}.
+Imposing independence is a strong expression of the view that fairness is equality. It might be interpreted as the notion that abilities (or features) in all groups are, or should be, equally distributed; the belief that observed differences in the distributions in training data are a manifestation of unfair discrimination, errors in data collection, or both, rather than inherent differences in the abilities of people belonging to one group or another.
+
+Below we will define a range of fairness metrics, all derived from the notion of independence. Notice that independence imposes a constraint on only two random variables - the predicted target $\hat{Y}$ and sensitive feature $Z$. In the equations that follow, we provide metrics that quantify the fairness of our model output $\hat{Y}$, but we could equally well replace the predicted target variable $\hat{Y}$, with the actual target variable $Y$ to assess the fairness of our data under the same criterion instead.
+
+\textbf{Mutual information}, denoted $I$, is popular in information theory for measuring dependence between random variables.
+\begin{equation} \label{eqn_MutualInfo}
+I(\hat{Y},Z) = \sum_{\hat{y} \in \mathcal{Y}} \sum_{z \in \mathcal{Z}}
+\Prob(\hat{y},z) \log \frac{\Prob(\hat{y},z)}{\Prob(\hat{y})\Prob(z)}.
+\end{equation}
+
+It is equal to zero, if and only if the joint distribution of $Z$ and $\hat{Y}$ is equal to the product of their marginal distributions. Therefore, two variables which have zero mutual information are independent (equation (\ref{eqn_Indep1D})). The \textbf{normalised prejudice index}\cite{Fukuchi} divides mutual information by a normalising factor so that the resulting value falls between zero and one:
+\begin{equation} \label{eqn_npi}
+r_{\text{npi}} = \frac{I(\hat{Y},Z)}{\sqrt{H(\hat{Y})H(Z)}},
+\end{equation}
+where
+\begin{equation} \label{eqn_entropy}
+H(Y) = -\sum_{y \in \mathcal{Y}} \Prob(y) \log \Prob(y),
+\end{equation}
+is the entropy. We have provided the formula for discrete random variables, for continuous variables we simply replace the sums with integrals.
+
+\begin{lookbox}
+\lbtitle{Exercise: Normalised prejudice index}
+Write a function that takes two arrays $y$ and $z$ of categorical features and returns the normalised prejudice index.
+\begin{enumerate}
+\item Compute the probability distributions $\Prob(y)$, $\Prob(z)$ and $\Prob(y,z)$. Note that these can be thought of as the frequency with which each event occurs.
+\item Compute the entropies $H(y)$ and $H(z)$ shown in equation (\ref{eqn_entropy}) and use these to compite the normalising factor, $\sqrt{H(y)H(z)}$.
+\item Compute the mutual information $I(z,y)$ shown in equation (\ref{eqn_MutualInfo}) and divide by the normalising factor.
+\end{enumerate}
+You can test your implementation against scikit-learn's:\\ \href{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.normalized\_mutual\_info\_score.html}{sklearn.metrics.normalized\_mutual\_info\_score}.
+\end{lookbox}
+
+
+A simple relaxation of independence requires only the mean predicted target variable (rather than the full distribution) to be equal for all values of the sensitive feature. Assuming the sensitive feature to be binary, that is,
+\[
+\Ex(\hat{Y} | Z=1) = \Ex(\hat{Y} | Z=0).
+\]
+A popular measure derived from this for regression problems is called the \textbf{mean difference} which (as the name suggests) looks at the difference between the mean predictions for different values of the sensitive feature $Z$,
+\[
+d = \Ex(\hat{Y} | Z=1) - \Ex(\hat{Y} | Z=0).
+\]
+
+Taking the simplest example of discrete binary classifier where we have a binary sensitive feature. We can write the requirement of independence as,
+\[
+\Prob(\hat{Y}=1 | Z=1) = \Prob(\hat{Y}=1 | Z=0).
+\]
+This requirement goes by many names in research literature - \textbf{demographic parity}, \textbf{statistical parity} and \textbf{parity impact} among others. With this criterion for fairness we can quantify the disparity by looking at the difference (as with mean difference) or the ratio of the probabilities for each sensitive feature. We can calculate the metrics from the $2 \times 2$ contingency table\footnote{Each cell of a contingency table shows the number of examples in the dataset satisfying the conditions given in the corresponding row and column headers with totals in the final row and column.\label{fnt_ConTab2}} shown in Table \ref{tab_independence}.
+%
+\begin{table}[h!]
+\centering
+\caption[Contingency table for prediction against the sensitive feature.]{Contingency table\textsuperscript{\ref{fnt_ConTab2}} for prediction against the sensitive feature.}
+\label{tab_independence}
+\vspace{10pt}
+\begin{tabular}{|l|r|r|r|}
+\hline
+      & $\hat{Y}=1$     & $\hat{Y}=0$     & Total     \\
+\hline
+\hline
+$Z=1$ & $n_{11}$        & $n_{10}$        & $n_{Z=1}$ \\
+$Z=0$ & $n_{01}$        & $n_{00}$        & $n_{Z=0}$ \\
+\hline
+\hline
+Total & $n_{\hat{Y}=1}$ & $n_{\hat{Y}=0}$ & $n$       \\
+\hline
+\end{tabular}
+\end{table}
+%
+In bio-medical sciences, the \textbf{risk difference}:
+\[
+d = \Prob(\hat{Y}=1 | Z=1) - \Prob(\hat{Y}=1 | Z=0)
+  = \frac{n_{11}}{n_{Z=1}} - \frac{n_{01}}{n_{Z=0}},
+\]
+measures the impact of treatment (or risk factors), $Z$ on outcome, $\hat{Y}$. In discrimination literature, it has been described as the \textbf{discrimination score} and \textbf{statistical parity difference} among others. Note that if $\hat{Y}=1$ is the advantageous outcome and $Z=1$ is the advantaged group, we would expect $d$ to be non-negative\footnote{We'll see later that this is not the case in the AIF360 implementation where $Z=1$ is the unprivileged group and $Z=0$ is the privileged group}. The algorithm is fair when $d=0$. The further from zero, the more unfair. A modified version of this metric is the \textbf{normalised difference}\cite{Zliobaite} which  divides the difference by,
+\begin{equation} \label{eqn_dmax}
+d_{\max} = \min\left\{ \frac{\Prob(\hat{Y}=1)}{\Prob(Z=1)},
+                       \frac{\Prob(\hat{Y}=0)}{\Prob(Z=0)} \right\}
+= \min\left\{ \frac{n_{\hat{Y}=1}}{n_{Z=1}},
+              \frac{n_{\hat{Y}=0}}{n_{Z=0}} \right\},
+\end{equation}
+thus ensuring the normalised difference is bounded between plus and minus one.
+
+\begin{lookbox}
+\lbtitle{Exercise: Statistical parity difference maximum}
+Show that 
+\[
+d_{\max} = \min\left\{ \frac{\Prob(\hat{Y}=1)}{\Prob(Z=1)},
+                       \frac{\Prob(\hat{Y}=0)}{\Prob(Z=0)} \right\}.
+\]
+\end{lookbox}
+
+Alternatively, we could instead take the ratio as a measure of discrimination:
+\[
+r = \frac{\Prob(\hat{Y}=1 | Z=1)}{\Prob(\hat{Y}=1 | Z=0)}
+  = \left. \frac{n_{11}}{n_{Z=1}} \middle/ \frac{n_{01}}{n_{Z=0}} \right. .
+\]
+In biomedical sciences this measure is called the \textbf{risk ratio} and is used  to measure the strength of association between treatment (or risk factors), $Z$, and outcome, $\hat{Y}$. It has been described in discrimination aware machine learning literature as the \textbf{impact ratio} or \textbf{disparate impact ratio}. The algorithm is fair if $r=1$. The further from one $r$ is, the more unfair. The Equal Employment Opportunity Commission (EEOC) have used this measure in their guidelines for identifying discrimination in employment selection processes\cite{US-EEOC}. As a rule of thumb, the EEOC determine that a company's selection system is having an adverse impact on a particular group if the selection rate for that group is less than four-fifths (or 80\%) that of the most advantaged group, that is, the impact ratio is less than 0.8 where $Z=0$ is the most advantaged group (for which the acceptance rate is the highest).
+
+The \textbf{elift ratio}\cite{Pedreschi} is similar to the impact ratio but instead of comparing acceptance rates for protected groups to each other, we compare them to the overall acceptance rate:
+\[
+r_{\text{elift}} = \frac{\Prob(\hat{Y}=1 | Z=0)}{\Prob(\hat{Y}=1)}.
+\]
+
+In theory, any measure of association suitable for the data types can be used as a metric to understand the magnitude of discrimination in our data or predictions. The \textbf{odds ratio} (popular in natural, social and biomedical sciences) is the ratio of the odds of a positive prediction for each group. We can write it as:
+\[
+r_{\text{odds}}
+= \frac{\Prob(\hat{Y}=1 | Z=1)\Prob(\hat{Y}=0 | Z=0)}
+       {\Prob(\hat{Y}=0 | Z=1)\Prob(\hat{Y}=1 | Z=0)}
+= \frac{n_{11}n_{00}}{n_{10}n_{01}}.
+\]
+The odds ratio is equal to one when there is no discrimination. Recall that the odds ratio is not a collapsible measure (see section \ref{sec_collapsibility}).
+
+\begin{lookbox}
+\lbtitle{Exercise: Odds ratio}
+Show that the odds ratio is always greater than or equal to one in the case where $\hat{Y}=1$ in the advantaged outcome and $Z=1$ is the privileged group.
+\end{lookbox}
+
+A nice feature of independence metrics is they can be evaluated on both the data and the model. A common problem in machine learning is that existing biases in the data can be exaggerated if protected groups are minorities in the population. By comparing bias metrics for the data with those of our model output, we can understand if our model is inadvertently introducing biases that do not originate from the data.
+
+It should be intuitive that independence can only be satisfied naturally by a model if the target variable $Y$ and sensitive feature $Z$ are independent. If this is not the case then satisfying independence for your model will not permit the theoretically `perfect' solution $\hat{Y}=Y$, should your model be able to achieve it. We would naturally expect that the stronger the relationship between the sensitive feature and target, the greater the trade-off between fairness and utility in satisfying independence criterion.
+
+A major shortcoming of independence (discussed in section \ref{sec_SimpsParadox}) is that it doesn't consider that there may be confounding variables. It assumes that all relevant features are held by all protected groups equally and where there are differences it assumes unfairness and passes the task of correcting for it, to the decision maker. Consider a simple hypothetical example where there are discrepancies between credit card approval rates for men and women at the population level which disappear once you control for (the confounding variable) income. It could be argued then that the real issue of fairness here appears to be the fact that women generally earn less than men. If the lender was to enforce independence between gender and its loan approval rate, say by setting less strict income requirements for women than men, this might feasibly lead to higher default rates among women. Clearly a less than desirable solution which, arguably, doesn't address the actual underlying problem. In fact it might be argued that enforcing independence could lead to less fair outcomes, on an individual level, in the sense that a man and woman who were the same in all other features would receive different outcomes as a result of enforcing independence in this way. We'll talk about individual fairness in the next chapter.
+
+Suppose we want to measure the relationship between the sensitive feature and outcome using one of the above metrics. A natural solution to the problem of confounding variables is to control for them by conditioning on them (if you have them in your dataset, that is). Of course you need to know which variables to control for. Next, we consider the extreme case where we condition on all other variables.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conditional Independence} \label{sec_CondIndep}
+
+Here we discuss the criterion which requires that predicted target variable is conditionally independent of the sensitive feature given all other features; that is,
+\[
+(\hat{Y} | X) \bot Z \quad \Rightarrow \quad
+\Prob(\hat{y} | z, x) = \Prob(\hat{y} | x).
+\]
+Suppose we wish to establish a causal connection between the decision or outcome and an individual's membership in some protected group. Typically in a decision process there are a number of unobserved variables, which makes proving a causal connection difficult. Take a job interview for example, the factors that determine who gets hired are typically subjective and often not even recorded, (as is typically the case in decisions which involve human judgement). In the case where a decision is made purely on the basis of an algorithm and there are no unobserved variables, making this connection becomes trivial. We simply perform a so called `twin test'. We imagine a `counterfactual' world in which for every individual in this world (say John Doe) there exists an `identical twin' in the counterfactual world which differers only by the protected feature of interest (Jane Doe). We then simply compare outcomes for the two individuals (John and Jane). If the outcomes are different, we have established the individual's membership in the protected group (in our example, gender) as the sole reason for it.
+
+Taking this approach to establishing cause with a model is pretty straight forward. We simply conduct a randomized experiment. The individuals for which we check the model output, need not exist, we can simply fabricate them and determine what the resulting model prediction is. Doing the twin test for a dataset (i.e. where you do not have access to the algorithm, only the decisions/predictions) is less trivial since the conterfactual twin for any given example need not exist in the data and we have no way of producing them without the algorithm. In addition, for any given point in the non-sensitive feature space the number of data points will likely be too small to justify the use of statistical methods in establishing cause. Barring this issue, using the counterfactual approach to establishing the fairness of our model, we can consider all the metrics we have above with independence as our fairness criterion but conditioned on $X$ as well as $Z$. So for example we define the \textbf{causal mean difference} as 
+\[
+d = \Ex(\hat{Y} | Z=1, X=x) - \Ex(\hat{Y} | Z=0, X=x).
+\]
+and the \textbf{observed mean difference} as
+\[
+d = \Ex(Y | Z=1, X=x) - \Ex(Y | Z=0, X=x).
+\]
+Multiple papers have described this as a means to establish disparate treatment liability in an algorithmic decision process because it exposes differing treatment of individuals based on protected class membership. Note that while it would be sufficient to demonstrate disparate treatment, (as discussed in section \ref{sec_AppLaw}) it is not necessary. Using protected features in the algorithm would be enough to result in disparate treatment liability in the US, the actual impact of using the feature is irrelevant.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Introduction to AIF360}
+
+Now that we have covered some measures of fairness, let's dive into calculating them. In this book we are going to use IBM's \href{https://aif360.mybluemix.net/resources}{AI Fairness 360 (AIF360)}. AIF360 is currently the most comprehensive open source library available for measuring and mitigating bias in machine learning models. The Python package includes an extensive set of metrics for datasets and models to test for biases, explanations for these metrics, and algorithms to mitigate bias in datasets and models many of which we will cover in this book. The system has been designed to be extensible, adopted software engineering best practices to maintain code quality, and is well \href{https://aif360.readthedocs.io/en/latest/index.html}{documented}. The package implements techniques from at-least eight published papers and includes over 71 bias detection metrics and nine bias mitigation algorithms\cite{AIF360}. These techniques can all be called in a standard way, similar to scikit-learn’s fit/transform/predict paradigm.
+
+In this section we're going to use AIF360 to calculate some of the metrics we've talked about in the previous section as a means to get started working with it. For calculating the metrics we've talked about so far, using AIF360 might seem to add unnecessary overhead as they are reasonably straightforward to code up directly once you have your data in a Pandas DataFrame. But remember, the library contains implementations of more complicated metrics and bias mitigations algorithms that we'll cover later on in this book. Before we can use the library, we need to install it. Instructions are provided in Appendix \ref{app_Install}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Statlog (German Credit Data) Data Set}
+
+The Jupyter Notebook, \texttt{\href{https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb}{mbml\_german.ipynb}}, contains an example calculating some of the above fairness metrics on both a dataset and model output. It uses the \href{https://archive.ics.uci.edu/ml/datasets/statlog+(german+credit+data)}{Statlog (German Credit Data) Data Set}, in which one thousand loan applicants are classified as representing `good' or `bad' credit risks based on features such as loan term, loan amount, age, gender, marital status and more.
+
+\begin{lookbox}
+\lbtitle{Exercise: Statlog (German Credit Data) Data Set}
+Sections 1-3 in the Jupyter Notebook, \texttt{\href{https://github.com/leenamurgai/mitigatingbiasml/blob/master/code/source/mbml-german.ipynb}{mbml\_german.ipynb}}, load the data and perform some exploratory data analysis (EDA), looking at correlation heat maps (using a variety of different measures of association) and comparing distributions of the target for different values of the features. Open the notebook and run the code up to section four. You should be able to answer the following questions by working through the notebook.
+\begin{enumerate}
+\item What proportion of the population is classified as male/female?
+\item What proportion of the population have good credit vs bad?
+\item How many continuous variables are there? What are they? Do any of them appear to be related? If so how? 
+\item How many categorical variables are there? What are they? Do any of them appear to be related? If so how?
+\end{enumerate}
+\end{lookbox}
+
+\textcolor{red}{Some EDA here?}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Calculating independence metrics}
+
+In order to calculate our metrics on the data using AIF360, we must have it in the correct format; that is, in a Pandas DataFrame (\texttt{data\_df}) containing only numeric data types. In code listing \ref{clt_AIF360metric}, we calculate the rate at which male and female applicants are classified as being good credit risks (\texttt{base\_rate}) along with the difference (\texttt{mean\_difference}) and the ratio (\texttt{disparate\_impact}) of these rates.
+%
+\begin{lstlisting}[caption={Calculating independence metrics for the data using AIF360}, label=clt_AIF360metric]
+# Create a DataFrame to store results in
+outcomes_df = pd.DataFrame(columns=[`female', `male',
+                                    `difference', `ratio'],
+                           index=[`data', `model',
+                                  `train data', `train model',
+                                  `test data', `test model'])
+
+# Define privileged and unprivileged groups
+privileged_groups = [{`sex_male':1}]
+unprivileged_groups = [{`sex_male':0}]
+
+# Create an instance of BinaryLabelDataset
+data_ds = BinaryLabelDataset(df = data_df,
+    label_names = [`goodcredit'],
+    protected_attribute_names = [`sex'])
+
+# Create an instance of BinaryLabelDatasetMetric
+data_metric = BinaryLabelDatasetMetric(data_ds,
+    privileged_groups = privileged_groups,
+    unprivileged_groups = unprivileged_groups)
+
+# Compute the metrics with data_metric and store them in outcomes_df
+outcomes_df.at[`data', `female'] = data_metric.base_rate(privileged=0)
+outcomes_df.at[`data', `male'] = data_metric.base_rate(privileged=1)
+outcomes_df.at[`data', `difference'] = data_metric.mean_difference()
+outcomes_df.at[`data', `ratio'] = data_metric.disparate_impact()
+\end{lstlisting}
+
+In the notebook we look at these metrics on both the data and the model output for three different sets of the data (the full dataset, the train set and the test set) with two different models (one trained on the full dataset and another trained only on a subset of the data - the training set). In code listing \ref{clt_AIF360metric}, we create a DataFrame to display the results in (\texttt{outcomes\_df}) and populate the first row of it. First we define our privileged and unprivileged groups.
+%
+\begin{lookbox}
+\lbtitle{Defining privileged and unprivileged groups}
+The format for these is a list of dictionaries. Each dictionary in the list defines a group, the key being a feature and the value being the value of the feature for members of the group. The key, value pairs in the dictionaries are joined with an intersection (AND operator) and the dictionaries in the list are joined with a union (OR operator). So for example,
+%
+\begin{lstlisting}
+[{`sex': 1, `age>=30': 1}, {`sex': 0}]
+\end{lstlisting}
+%
+\noindent
+corresponds to individuals such that,
+%
+\begin{lstlisting}
+(data_df[`sex']==1 AND data_df[`age>=30']==1)  OR (data_df[`sex']==0)
+\end{lstlisting}
+\end{lookbox}
+
+Next we create a \href{https://aif360.readthedocs.io/en/latest/modules/generated/aif360.datasets.BinaryLabelDataset.html#aif360.datasets.BinaryLabelDataset}{\texttt{BinaryLabelDataset}} object (\texttt{data\_ds}) which in turn is used to create a \href{https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.BinaryLabelDatasetMetric.html#aif360.metrics.BinaryLabelDatasetMetric}{\texttt{BinaryLabelDatasetMetric}} object (\texttt{data\_metric}). We then calculate the fairness metrics from \texttt{data\_metric} and store the results in \texttt{outcomes\_df}.
+
+\begin{lookbox}
+\lbtitle{Exercise: Multiple sensitive features}
+Calculate independence metrics (base rates, difference and ratio) for the full dataset in the case where the privileged group is males age 30 and over, and the unprivileged group is females under the age of 30. Do this two ways, using AIF360 and using Pandas. Compare your results to make sure they match.
+\end{lookbox}
+
+Once we have trained a model and made predictions, similar code can be written to calculate independence metrics on the model predictions for the full dataset. Code listing \ref{clt_AIF360metric1} shows how we do this using the predictions from the trained model \texttt{clf}.
+
+\begin{lstlisting}[caption={Calculating independence metrics for the model using AIF360}, label=clt_AIF360metric1]
+# Create a DataFrame with the features and model predicted target
+model_df = pd.concat([X, pd.Series(clf.predict(X), name=`goodcredit')],
+	axis=1)
+
+# Create an instance of BinaryLabelDataset
+model_ds = BinaryLabelDataset(df = model_df,
+    label_names = [`goodcredit'],
+    protected_attribute_names = [`sex_male'])
+
+# Create an instance of BinaryLabelDatasetMetric
+model_metric = BinaryLabelDatasetMetric(model_ds,
+    privileged_groups = privileged_groups,
+    unprivileged_groups = unprivileged_groups)
+
+# Compute the metrics with model_metric and store them in outcomes_df
+outcomes_df.at[`model', `female'] = model_metric.base_rate(privileged=0)
+outcomes_df.at[`model', `male'] = model_metric.base_rate(privileged=1)
+outcomes_df.at[`model', `difference'] = model_metric.mean_difference()
+outcomes_df.at[`model', `ratio'] = model_metric.disparate_impact()
+\end{lstlisting}
+
+Table \ref{tab_IndependenceMetrics} shows the results of the calculations stored in \texttt{outcomes\_df} from the notebook. From Table \ref{tab_IndependenceMetrics} we note some variation in the rates at which men and women are predicted to present good credit risks for the model versus the data. In particular, the model acceptance rates are higher for both male and female applicants than those observed in the data. There are particularly big differences when we compare results for the test data versus the model on the test data (test model), which is not surprising since the mean difference and impact ratio for the train data and test data are markedly different. In addition we are aware that our model is overfitting. Without intervention, our model appears to be reducing the bias present in the data for the test set (as measured by our independence metrics).
+%
+\begin{table}[h!]
+{\centering
+\caption{Acceptance rates for the Statlog (German Credit) Data Set.}
+\label{tab_IndependenceMetrics}
+\vspace{10pt}
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+                               & Female & Male  & Difference & Ratio \\
+\hline
+\hline
+Data                           & 0.648  & 0.723 & -0.0748    & 0.897 \\
+Model\textsuperscript{a}       & 0.674  & 0.749 & -0.0751    & 0.900 \\
+\hline
+Train data                     & 0.659  & 0.719 & -0.0601    & 0.916 \\
+Train model\textsuperscript{b} & 0.667  & 0.731 & -0.0647    & 0.911 \\
+\hline
+Test data                      & 0.607  & 0.741 & -0.1345    & 0.819 \\
+Test model\textsuperscript{b}  & 0.705  & 0.820 & -0.1152    & 0.860 \\
+\hline
+\end{tabular}\par}
+\vspace{4pt}
+\footnotesize
+\hspace{1.5em}\textsuperscript{a}Model trained on the full dataset.
+
+\hspace{1.5em}\textsuperscript{b}Model trained on the train dataset only.
+\end{table}
+
+
+\begin{lookbox}
+\lbtitle{Exercise: Twin test}
+Implement the twin test (described in section \ref{sec_CondIndep}) for the model trained on the full dataset. Calculate the causal mean difference between male and female applicants using 2000 data points (1000 male and 1000 female applicants) i.e. the full dataset together with the `twin' of the opposite gender.
+\end{lookbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Balanced errors} \label{sec_BalErr}
+
+In this section we learn about fairness criteria which seek to balance errors across groups, rather than outcomes. The fundamental assumption here is that the training data is fair; the target variable is the ground truth variable we wish to affect, the data is accurate and representative of the population and the features directly impact the target. Assuming we have said data, for our model to be fair, we require the errors to be distributed similarly for different subgroups of the population (defined by the values of sensitive features). Expressed differently, we want the errors to be independent of protected characteristics, that is, $(\hat{Y}-Y) \bot Z$. We discussed earlier in the chapter how independence and conditional independence constraints have been interpreted as avoiding disparate impact and treatment respectively. Analogously, balanced error criterion have been described as avoiding \textbf{disparate mistreatment}\cite{DispMistreat}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Regression}
+
+A relaxation of this criterion balances the mean error for the groups (rather than comparing the full distributions). \textbf{Balanced residuals}\cite{BalRes} takes the difference of the mean errors as a measure of fairness:
+\[
+d_{\text{err}} = \Ex(\hat{y} - y | Z=1) - \Ex(\hat{y} - y | Z=0),
+\]
+or written more explicitly,
+\[
+d_{\text{err}} = \frac{1}{n_0}\sum_{i|z_i=0}(y_i-\hat{y}_i)
+               - \frac{1}{n_1}\sum_{i|z_i=1}(y_i-\hat{y}_i).
+\]
+Here $d_{\text{err}}=0$ would be considered fair.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Classification}
+
+For a classification problem the most obvious relaxation would be to ensure equal error rates (or equivalently accuracy) for all groups. As an example, recall the project Gender Shades we discussed in section \ref{sec_harms}, that audited several commercial gender classification packages measured their accuracy for different protected groups. To derive a measure of fairness from this criterion we could (as before) take the difference or the ratio; both of these are implemented in AIF360. The \href{https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.ClassificationMetric.html#aif360.metrics.ClassificationMetric.error_rate_difference}{\textbf{error rate difference}} is given by
+\[
+d_{\text{err}} = \Prob(\hat{Y}\neq Y | Z=1) - \Prob(\hat{Y}\neq Y | Z=0).
+\]
+Again here $d_{\text{err}}=0$ would be considered fair. The \href{https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.ClassificationMetric.html#aif360.metrics.ClassificationMetric.error_rate_ratio}{\textbf{error rate ratio}} is given by
+\[
+r_{\text{err}} = \frac{\Prob(\hat{Y}\neq Y | Z=1)}
+                      {\Prob(\hat{Y}\neq Y | Z=0)}
+\]
+in which case $r_{\text{err}}=1$ would be considered fair.
+
+A binary classification model can make two different types of errors (false positives and false negatives), one of which will often be more desirable than the other. Table \ref{tab_CMErrMetrics} in appendix \ref{app_Metrics} summarises the different types of error rates for a binary classification model that we might want to balance. The differences and ratios of all of these metrics can be found in AIF360s \href{https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.ClassificationMetric.html#}{ClassificationMetric} class.
+
+Balancing errors (or equivalently performance metrics) across groups can be broken down into two separate criteria, described as \textbf{separation} and \textbf{sufficiency}\cite{FairMLBook}. Each of these criteria can be defined as a conditional independence constraint on the joint distributions of the sensitive features, $Z$, the target feature $Y$ and predicted target $\hat{Y}$. We summarise the these in Table \ref{tab_FairErrors}.
+%
+\begin{table}[h!]
+\centering
+\caption{Fairness constraints on errors.}
+\label{tab_FairErrors}
+\vspace{10pt}
+\begin{tabular}{|c|c|}
+\hline
+Separation             & Sufficiency            \\
+\hline
+\hline
+$\hat{Y} \bot (Z | Y)$ & $Y \bot (Z | \hat{Y})$ \\
+\hline
+\end{tabular}
+\end{table}
+%
+In the sections that follow we shall see how each of these criteria correspond to balancing error rates along the columns (conditioning on $Y$) or the rows (conditioning on $\hat{Y}$) of the confusion matrix (see Table \ref{tab_CMErrMetrics} in appendix \ref{app_Metrics}). In the former case, the criterion requires the false negative and false positive rates to be the same for all groups; in the latter case, the false discovery rate and false omission rate to be the same for all groups. Let's start with separation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Separation}
+
+Separation requires the predicted target variable to be independent of the sensitive feature, conditioned on the target variable, that is, $\hat{Y} \bot (Z|Y)$. We can say that the predicted target $\hat{Y}$, is `separated' from the sensitive feature $Z$, by the target variable $Y$. The corresponding graphical model for separation criteria is shown in Figure \ref{fig_separation}.
+%
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{03_GroupFairness/figures/Fig_Separation.png}
+\caption{Graphical model for separation.}
+\label{fig_separation}
+\end{figure}
+%
+Essentially we are saying that for a fixed value of the target variable, there should be no difference in the distribution of the predicted target variable, for different values of the sensitive feature. That is,
+\[
+\Prob(\hat{y}|y, z) = \Prob(\hat{y}|y).
+\]
+Unlike independence, separation, allows for dependence between the predicted target variable and the sensitive feature but only to the extent that it exists between the actual target variable and the sensitive feature.
+
+Once again let's take the simplest example of discrete binary classifier where we have a single sensitive binary feature. We can write this requirement as two conditions,
+\begin{align*}
+\Prob(\hat{Y}=1 | Z=1, Y=1) & = \Prob(\hat{Y}=1 | Z=0, Y=1), \\
+\Prob(\hat{Y}=1 | Z=1, Y=0) & = \Prob(\hat{Y}=1 | Z=0, Y=0).
+\end{align*}
+Recall that $\Prob(\hat{Y}=1 | Y=1)$ is the true positive rate ($TPR$) of the classifier and $\Prob(\hat{Y}=1 | Y=0)$ is the false positive rate ($FPR$). We see then that separation requires the true positive rate to be the same for all values of the sensitive feature and the false positive rate to be the same for all values of the sensitive feature. Note that the true positive rate is balanced if and only if the false negative rate is balanced, so thinking in terms of error metrics only, separation requires the false negative and false positive rates to be balanced. This fairness criterion is most well known as \textbf{equalised odds}\cite{EqOfOp}.
+
+Implemented in IBM's fairness library, \href{https://github.com/IBM/AIF360}{AIF360}, are two related metrics. The \textbf{average odds difference} measures the magnitude of unfairness as the average of the difference in true positive rate and false positive rate, that is,
+\[
+d_{\text{av-odds}} = \frac{1}{2}
+[ TPR_{Z=0} - TPR_{Z=1} + FPR_{Z=0} - FPR_{Z=1} ].
+\]
+The \textbf{average odds error} measures the magnitude of unfairness  as the average of the absolute difference in true positive rate and false positive rate, that is,
+\[
+d_{\text{av-odds-err}} = \frac{1}{2}
+[ |TPR_{Z=0} - TPR_{Z=1}| + |FPR_{Z=0} - FPR_{Z=1}| ].
+\]
+A relaxed version of equalised odds, called \textbf{equal opportunity}\cite{EqOfOp}, requires only the true positive rates to be the same across all groups (assuming a positive prediction is the more advantageous ourcome). A metric which uses this as a criterion to measure unfairness in AIF360 is \textbf{equal opportunity difference} which takes the difference in true positive rates across groups, that is,
+\[
+d_{\text{eq-op}} = TPR_{Z=0} - TPR_{Z=1}.
+\]
+
+\begin{lookbox}
+\lbtitle{Exercise: Fair equality of opportunity}
+Can you see how the metric \emph{equal opportunity} relates to the second principle of justice as fairness discussed in section \ref{sec_FairnessJustice}?
+\end{lookbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Sufficiency}
+
+Sufficiency requires the sensitive feature $Z$ and target variable $Y$ to be independent, conditional on the predicted target variable $\hat{Y}$, that is, $Y \bot (Z|\hat{Y})$. We can say that the predicted target $\hat{Y}$ is `sufficient' for the sensitive feature $Z$. That is to say, given $\hat{Y}$, $Z$ provides no additional information. The corresponding graphical model for sufficiency criteria is shown in Figure \ref{fig_sufficiency}.
+%
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{03_GroupFairness/figures/Fig_sufficiency.png}
+\caption{Graphical model for sufficiency.}
+\label{fig_sufficiency}
+\end{figure}
+%
+Comparing sufficiency to separation we note that $Y$ and $\hat{Y}$ are reversed in the graphical model and conditional independence constraint. It should hopefully be straightforward to see then that sufficiency requires the false omission rate and false discovery rate (shown in Table \ref{tab_CMErrMetrics} of appendix \ref{app_Metrics}) to be balanced across protected groups.
+
+\begin{lookbox}
+\lbtitle{Exercise: Sufficiency}
+Show that sufficiency is satisfied if and only if the false omission rate and false discovery rate are equal for all groups.
+\end{lookbox}
+
+There are some nice properties of separation and sufficiency criteria. Note that unlike balanced outcome criteria they do not preclude the theoretically `perfect' solution, $\hat{Y}=Y$. The criteria also preclude large differences in error rates for different groups that are typical when disadvantaged classes are minorities suffering from low support. It's worth reiterating that unlike independence, separation and sufficiency criteria assume that the relationship between $Y$ and $Z$ prescribed by the training data is fair, thus only make sense if the target variable is reliable as the ground truth. In such cases, balancing error criteria allow flexibility in the choice which types of errors are important to equalize, based on the human cost. For example, in pretrial risk assessment we might choose to prioritise balancing false positive rates if we believe that it is preferable to set free a guilty defendant than incarcerate an innocent one. As another example, let's take the infamous \href{https://en.wikipedia.org/wiki/Stop-and-frisk_in_New_York_City}{NYPD stop-and-frisk program} where pedestrians were stopped, interrogated and searched on `reasonable' suspicion of carrying contraband. In this case we might want to ensure false discovery rates are balanced across groups to ensure we are not disproportionately targeting particular minority groups.
+
+\begin{lookbox}
+\lbtitle{Exercise: Stop-and-frisk}
+\begin{itemize}
+\item Why might we choose to balance false discovery rates for stop-and-frisk, rather than say false omission, false negative or false positive rates?
+\item Is it fair to only balance false discovery rates?
+\item How might we go about measuring the false omission rate if we wanted to check if it was also balanced?
+\end{itemize}
+\end{lookbox}
+
+Of our two fairness criteria, separation and sufficiency, the latter imposes a weaker constraint on our model. To understand why we explore another interpretation of sufficiency which intuitively explains why, in many cases, it is satisfied implicitly through the training process\cite{ImplicitFairness}. Let us look at sufficiency criteria in terms of the classification score $P$,
+\[
+\Prob(Y=1 | P=p, Z=1) = \Prob(Y=1 | P=p, Z=0) \quad \forall \, p
+\]
+We say that a classifier score is calibrated if
+\[
+\Prob(Y=1 | P=p) = p \quad \forall \, p. 
+\]
+Essentially, this is the requirement that the proportion of data points assigned the score $p$, which did in fact have a positive outcome $Y=1$, should be equal to the score $p$. The score $p$ can then be interpreted, at the population level, as the probability that the a positive prediction $\hat{Y}=1$ would be correct\footnote{For the score to be interpretable as this probability at the individual level, we would need to satisfy the stronger criteria $P=\Ex[Y|X]$}.
+
+From the definitions above we can see that if our classifier scores are calibrated for all groups, sufficiency is automatically satisfied. Conversely, if our model satisfies sufficiency but not calibration by group, we can calibrate our model score through a simple transformation. We simply pick a value for $Z$, $Z=1$ say, and then calculate the mapping,
+\[
+\Prob(Y=1|P=p, Z=1) = f(p).
+\]
+We then transform all our scores to new scores (which satisfy calibration by group) by applying the inverse mapping $f^{-1}(P)$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Back to AIF360}
+
+In order to calculate balanced error metrics with AIF360, we need to create an object of type \href{https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.ClassificationMetric.html}{\texttt{ClassificationMetric}}. Returning to our example working with the German Credit Data, code listing \ref{clt_AIF360metric2} calculates a series of balanced error metrics and populates the DataFrame \texttt{errors\_df} with them. Recall that \texttt{data\_ds} and \texttt{model\_ds} were created in code listings \ref{clt_AIF360metric} and \ref{clt_AIF360metric1} respectively; \texttt{privileged\_groups} and \texttt{unprivileged\_groups} were defined in the former code listing.
+%
+\begin{lstlisting}[caption={Calculating balanced error metrics with AIF360}, label=clt_AIF360metric2]
+# Create a DataFrame to store results in
+errors_df = pd.DataFrame(columns=[`female', `male',
+                                  `difference', `ratio'],
+                         index=[`ERR', `FPR', `FNR', `FDR', `FOR'])
+
+# Create an instance of ClassificationMetric
+clf_metric = ClassificationMetric(data_ds,
+    model_ds,
+    privileged_groups = privileged_groups,
+    unprivileged_groups = unprivileged_groups)
+
+# Compute the metrics with clf_metric and store them in errors_df
+# Error rates for the unprivileged group
+errors_df.at[`ERR', `female'] = clf_metric.error_rate(privileged=False)
+errors_df.at[`FPR', `female'] =
+    clf_metric.false_positive_rate(privileged=False)
+errors_df.at[`FNR', `female'] =
+    clf_metric.false_negative_rate(privileged=False)
+errors_df.at[`FDR', `female'] =
+    clf_metric.false_discovery_rate(privileged=False)
+errors_df.at[`FOR', `female'] =
+    clf_metric.false_omission_rate(privileged=False)
+
+# Error rates for the privileged group
+errors_df.at[`ERR', `male'] = clf_metric.error_rate(privileged=True)
+errors_df.at[`FPR', `male'] =
+    clf_metric.false_positive_rate(privileged=True)
+errors_df.at[`FNR', `male'] =
+    clf_metric.false_negative_rate(privileged=True)
+errors_df.at[`FDR', `male'] =
+    clf_metric.false_discovery_rate(privileged=True)
+errors_df.at[`FOR', `male'] =
+    clf_metric.false_omission_rate(privileged=True)
+
+# Differences in error rates
+errors_df.at[`ERR', `difference'] = clf_metric.error_rate_difference()
+errors_df.at[`FPR', `difference'] =
+    clf_metric.false_positive_rate_difference()
+errors_df.at[`FNR', `difference'] =
+    clf_metric.false_negative_rate_difference()
+errors_df.at[`FDR', `difference'] =
+    clf_metric.false_discovery_rate_difference()
+errors_df.at[`FOR', `difference'] =
+    clf_metric.false_omission_rate_difference()
+
+# Ratios of error rates
+errors_df.at[`ERR', `ratio'] = clf_metric.error_rate_ratio()
+errors_df.at[`FPR', `ratio'] = clf_metric.false_positive_rate_ratio()
+errors_df.at[`FNR', `ratio'] = clf_metric.false_negative_rate_ratio()
+errors_df.at[`FDR', `ratio'] = clf_metric.false_discovery_rate_ratio()
+errors_df.at[`FOR', `ratio'] = clf_metric.false_omission_rate_ratio()
+
+display(errors_df)
+\end{lstlisting}
+%
+The DataFrame \texttt{error\_df} is shown in Table \ref{tab_BalancedErrorMetrics}.
+%
+\begin{table}[h!]
+{\centering
+\caption{Error metrics for the Statlog (German Credit Data) Data Set.}
+\label{tab_BalancedErrorMetrics}
+\vspace{10pt}
+\begin{tabular}{|l|r|r|r|r|}
+\hline
+Error metric\textsuperscript{a} & Female & Male & Difference & Ratio \\
+\hline
+\hline
+ERR & 0.246 & 0.180 &  0.066 & 1.37 \\
+\hline
+FPR & 0.458 & 0.472 & -0.014 & 0.97 \\
+FNR & 0.108 & 0.078 &  0.030 & 1.39 \\
+FDR & 0.250 & 0.152 &  0.098 & 1.65 \\
+FOR & 0.235 & 0.296 & -0.061 & 0.79 \\
+\hline
+\end{tabular}\par}
+\vspace{4pt}
+\footnotesize
+\hspace{1.5em}\textsuperscript{a}We abbreviate error rate (ERR), false positive rate (FPR), false negative rate (FNR), false discovery rate (FDR) and false omission rate (FOR). See appendix section \ref{sec_ConfMatMets} for detailed descriptions of confusion matrix metrics.
+\end{table}
+%
+This time we just look at the metrics for the model trained on the training set and calculated on the test set. We note that the overall error rate is 37\% higher for female applicants. The false negative rate is 39\% higher for female applicants, that is for female applicants we more often incorrectly predict that they represent bad credit risks when they are in fact good credit risks. We also note that the false discovery rate is 65\% higher for female applicants which means that when we do predict women to be credit worthy they are more often not. The false omission rate is 21\% lower for female applicants which means we are more often correct when we predict that they are not credit worthy. Our findings are not surprising given the difference in prevalence of credit worthy male and female applicants between our training and test sets shown in Table \ref{tab_IndependenceMetrics}.
+
+Recall that when we compared fairness metrics under the independence criterion, it appeared that our model was reducing the level of bias in the data. Note that comparing balanced error metrics (in addition to independence metrics) gives us a richer understanding of the behaviour of our model in relation to protected groups.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Incompatibility between fairness criteria}
+
+So far in this chapter we have learned a range of different group fairness criteria and seen how each of them can be viewed as imposing different restrictions on the joint distributions of our variables $X$, $Z$, $Y$ and $\hat{Y}$. In this section we will show that these fairness criteria in some cases are restrictive enough to mean that satisfying multiple fairness criteria is impossible, except in some degenerate cases. In proving incompatibility between the fairness criteria given about we'll use various rules of probability. These are summarised in Appendix \ref{app_ProbRules}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Independence versus Sufficiency}
+
+\begin{lookbox}
+\lbtitle{Independence versus Sufficiency}
+Independence ($Z \bot \hat{Y}$) and sufficiency ($Z \bot Y | \hat{Y}$) can only be simultaneously satisfied if the sensitive feature, $Z$ and the target variable $\hat{Y}$ are independent ($Z \bot Y$).
+\end{lookbox}
+
+To see this consider the conditional distribution $\Prob(z|y,\hat{y})$. Applying independence criterion, equation (\ref{eqn_Indep2D}), followed by the product rule in equation (\ref{eqn_ProductRuleD}),
+\begin{equation} \label{eqn_IndSuf1}
+Z \bot \hat{Y} \quad \Rightarrow \quad  \Prob(z|y,\hat{y})
+= \Prob(z|y) = \frac{\Prob(z,y)}{\Prob(y)}.
+\end{equation}
+Applying sufficiency, equation (\ref{eqn_CondIndep1D}), followed by independence, equation (\ref{eqn_Indep2D}), gives,
+\begin{equation} \label{eqn_IndSuf2}
+Z \bot Y | \hat{Y} \quad \Rightarrow \quad  \Prob(z|y,\hat{y})
+= \Prob(z|\hat{y}) = \Prob(z).
+\end{equation}
+Equating equations (\ref{eqn_IndSuf1}) and (\ref{eqn_IndSuf2}) and then rearranging gives,
+\[
+\Prob(z|y) = \Prob(z)\Prob(y).
+\]
+Thus, $Z$ and $Y$ must be independent.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Independence versus Separation}
+
+\begin{lookbox}
+\lbtitle{Independence versus Separation}
+In the case that $Y$ is binary, independence ($Z \bot \hat{Y}$) and separation ($Z \bot \hat{Y} | Y$) criteria can only be simultaneously satisfied if either $\hat{Y} \bot Y$ or $Y \bot Z$.
+\end{lookbox}
+
+To see this we start by using the sum rule in equation (\ref{eqn_SumRuleD}), and then the product rule in equation (\ref{eqn_ProductRuleD}) to give,
+\begin{equation} \label{eqn_IndSep1}
+\Prob(\hat{y}) = \sum_{y\in\mathcal{Y}} \Prob(\hat{y}, y)
+               = \sum_{y\in\mathcal{Y}} \Prob(\hat{y}|y) \Prob(y).
+\end{equation}
+Doing the same again but conditioning on $Z$, we have
+\[
+\Prob(\hat{y}|z) = \sum_{y\in\mathcal{Y}} \Prob(\hat{y}|y, z) \Prob(y|z). \]
+Since $\hat{Y} \bot Z$ we can rewrite this as
+\begin{equation} \label{eqn_IndSep2}
+\Prob(\hat{y}) = \sum_{y\in\mathcal{Y}} \Prob(\hat{y}|y) \Prob(y|z).
+\end{equation}
+Equating equations (\ref{eqn_IndSep1}) and (\ref{eqn_IndSep2}) and rearranging gives,
+\begin{equation} \label{eqn_IndSep3}
+\sum_{y\in\mathcal{Y}} \Prob(\hat{y}|y) \left[\Prob(y)-\Prob(y|z)\right] = 0
+\end{equation}
+
+If we assume $Y$ is binary, then
+\[
+\Prob(Y=1)=1-\Prob(Y=0).
+\]
+Substituting in equation (\ref{eqn_IndSep3}) we can show that
+\[
+[\Prob(\hat{y}|Y=0)-\Prob(\hat{y}|Y=1)][\Prob(Y=0)-\Prob(Y=0|z)] = 0,
+\]
+which is true if and only if
+\[
+\Prob(\hat{y}|Y=0) = \Prob(\hat{y}|Y=1) \quad \Rightarrow \quad
+\hat{Y} \bot Y,
+\]
+or,
+\[
+\Prob(Y=0) = \Prob(Y=0|z)  \quad \Rightarrow \quad Y \bot Z.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Separation versus Sufficiency}
+
+\begin{lookbox}
+\lbtitle{Separation versus Sufficiency I}
+In the case where all events in the joint distribution of $Z$, $Y$ and $\hat{Y}$ have non zero probability, separation ($Z \bot \hat{Y} | Y$) and sufficiency ($Z \bot Y | \hat{Y}$) can only be simultaneously be satisfied if the sensitive feature, $Z$ is independent of both the target variable $Y$ and the predicted target $\hat{Y}$, that is if $Z \bot Y$ and $Z \bot \hat{Y}$.
+\end{lookbox}
+
+To see this consider the conditional distribution $\Prob(z|y,\hat{y})$. Applying separation and sufficiency criteria gives,
+\begin{equation} \label{eqn_SepSuf1}
+\Prob(z|y,\hat{y}) = \Prob(z|y) = \Prob(z|\hat{y}).
+\end{equation}
+Substituting (\ref{eqn_SepSuf1}) into the product rule (\ref{eqn_ProductRuleD}) gives,
+\begin{equation}\label{eqn_SepSuf2}
+\Prob(z,y) = \Prob(z|\hat{y}) \Prob(y).
+\end{equation}
+Substituting equation (\ref{eqn_SepSuf2}) into the sum rule (\ref{eqn_SumRuleD}) gives,
+\[
+\Prob(z) = \sum_{y\in\mathcal{Y}} \Prob(z|\hat{y}) \Prob(y)
+\]
+Provided all events have non-zero probability, we know that $\Prob(z|\hat{y})$ is not some trivial function of $Y$ and we can move $\Prob(z|\hat{y})$ outside of the summation. Thus we have,
+\begin{equation}\label{eqn_SepSuf3}
+\Prob(z) = \Prob(z|\hat{y})
+\end{equation}
+and $Z$ and $\hat{Y}$ must be independent. Equating equations (\ref{eqn_SepSuf1}) and (\ref{eqn_SepSuf3}) tells us that $Z$ and $Y$ must also be independent.
+
+\begin{lookbox}
+\lbtitle{Separation versus Sufficiency II}
+In the case where $Y$ is binary, separation and sufficiency can only be satisfied simultaneously if the sensitive feature is independent of the target variable, or the model has an accuracy of 100\% ($\hat{Y}=Y$) or 0\% ($\hat{Y}=1-Y$).
+\end{lookbox}
+
+Consider the case where $Y$ is binary. Separation requires all groups to have the same true positive rate (recall or $TPR$) and the same false positive rate ($FPR$). On the other hand, sufficiency requires all groups to have the same positive predictive value (precision or $PPV$) and the same negative predictive value ($NPV$). Then under separation and sufficiency, we can write the positive and negative predictive values in terms of the true positive and false positive rates as follows:
+\begin{equation} \label{eqn_PPV}
+PPV = \frac{p TPR}{p TPR + (1-p)FPR}
+\end{equation}
+and
+\begin{equation} \label{eqn_NPV}
+NPV = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}
+\end{equation}
+where $p=\Prob(Y=1)$.
+
+\begin{lookbox}
+\lbtitle{Exercise: Predictive values}
+Prove the results given in equations (\ref{eqn_PPV}) and (\ref{eqn_NPV})
+\end{lookbox}
+
+Denote $p_z=\Prob(Y=1|Z=z)$ then we can show from equations (\ref{eqn_PPV}) and (\ref{eqn_NPV}) that for any distinct pair of groups $Z=a$ and $Z=b$ for both separation and sufficiency to hold we must have
+\begin{equation} \label{eqn_PRT1}
+FPR (p_a-p_b) TPR = 0
+\end{equation}
+and
+\begin{equation} \label{eqn_PRT2}
+(1-FPR) (p_a-p_b) (1-TPR) = 0
+\end{equation}
+respectively.
+
+\begin{lookbox}
+\lbtitle{Exercise: Separation versus sufficiency}
+Show that for separation and sufficiency to hold equations (\ref{eqn_PRT1}) and (\ref{eqn_PRT2}) must hold for  for any pair of groups $Z=a$ and $Z=b$.
+\end{lookbox} 
+
+Equations (\ref{eqn_PRT1}) and (\ref{eqn_PRT2}) can only be simultaneously satisfied in 3 cases:
+\begin{enumerate}
+\item $p_a=p_b \, \forall \, a, b$ in which case $Y \bot Z$,
+\item $FPR=0$ and $TPR=1$ in which case $Y=\hat{Y}$,
+\item $FPR=1$ and $TPR=0$ in which case $Y=1-\hat{Y}$.
+\end{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Summary}
+\addcontentsline{toc}{section}{Summary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Group fairness}
+
+\begin{itemize}[leftmargin=*]
+\item The term group fairness is used to describe a series of metrics that all stem from the same high level idea; the notion that some property should be balanced or equal across different subgroups of a population, where the subgroups are determined by the values of some protected characteristic such as gender or race.
+%
+\item In general group fairness criterion and measures can be derived from independence constraints on the joint distributions of the non-sensitive features $X$, sensitive features, $Z$, the target feature $Y$ and predicted target $\hat{Y}$.
+%
+\item Group fairness criteria can be broadly classified into two types; those seeking to balance outcomes across groups and those balancing errors.
+%
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Balanced Outcomes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Independence}
+
+\begin{itemize}[leftmargin=*]
+\item The term \emph{group fairness} is used to describe a class of metrics that are used to measure discrimination or bias in a given decision process.
+%
+\item Independence imposes the requirement that the predicted target variable be independent of the sensitive feature.
+%
+\item Independence can be viewed as addressing disparate impact, since we are only interested in the relationship between the outcome and sensitive feature.
+%
+\item Independence is a strong expression of the view that fairness is equality. It might be interpreted as the notion that abilities (or features) in all groups are, or should be, equally distributed; the belief that observed differences in the distributions in training data are a manifestation of unfair discrimination, errors in data collection, or both, rather than inherent differences in the abilities of people belonging to one group or another.
+%
+\item A nice feature of independence metrics is they can be evaluated on both the data and the model. A common problem in machine learning is that existing biases in the data can be exaggerated if protected groups are minorities in the population. By comparing independence metrics for the data and with those of our model output we can understand if our model is inadvertently introducing biases that do not originate from the data.
+%
+\item If the target variable $Y$ and sensitive feature $Z$ are not independent then satisfying independence for your model will not permit the theoretically ‘perfect’ solution $Y = \hat{Y}$. We would naturally expect
+that the stronger the relationship between the sensitive feature and target, the greater the trade-off between fairness and utility in satisfying the independence criterion.
+%
+\item A major shortcoming of independence is that it doesn't consider that there may be confounding variables. It assumes that all relevant features are held by all protected groups equally and where there are differences it assumes unfairness and passes the task of correcting for it to the decision maker.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Conditional independence}
+
+\begin{itemize}[leftmargin=*]
+\item Conditional independence imposes the requirement that the predicted target variable be conditionally independent of the sensitive feature, given all other features.
+%
+\item Conditional independence has been interpreted as addressing disparate treatment, since it exposes differing treatment of individuals based on protected class membership. In reality, while it would be sufficient to demonstrate disparate treatment, it is not necessary. Using protected features in the algorithm would be enough to result in disparate treatment liability in the US, the impact of using the feature is irrelevant.
+%
+\item In the case where a decision is made purely on the basis of an algorithm and there are no unobserved variables, we can perform a `twin test' to establish disparate treatment. We conduct a randomized experiment and calculate the causal mean difference. If the value is non-zero, we have established the existence of disparate treatment.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Balanced errors}
+
+\begin{itemize}[leftmargin=*]
+\item Balanced error criteria assume that the relationship between the target variable and sensitive feature prescribed by the training data is fair so only make sense if the target variable is reliable as the ground truth. Under this assumption that our data is fair, for our model to be fair, we require errors to be distributed similarly for different subgroups of the population (defined by the values of sensitive features).
+%
+\item Ensuring balanced errors has been described as avoiding disparate mistreatment.
+%
+\item For a regression model balanced residuals takes the difference of the mean errors for each group as a measure of fairness.
+%
+\item For a classification problem we could could use the error rate difference or the error rate ratio as a measure of fairness.
+%
+\item Unlike balanced outcome criteria, balanced error criteria do not preclude the theoretically ‘perfect' solution, $\hat{Y}=Y$.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Separation}
+
+\begin{itemize}[leftmargin=*]
+\item Separation requires the predicted target variable to be independent of the sensitive feature, conditioned on the target variable
+%
+\item Separation, allows for dependence between the predicted target variable and the sensitive feature but only to the extent that it exists between the actual target variable and the sensitive feature.
+%
+\item For a binary classification model, separation requires both the false negative and false positive rates to be balanced across groups. This criterion is known as equalised odds
+%
+\item Equal opportunity criterion requires only the true positive rates to be the same across all groups (assuming a positive prediction is the more advantageous outcome).
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection*{Sufficiency}
+
+\begin{itemize}[leftmargin=*]
+\item Sufficiency requires the sensitive feature and target variable to be independent, conditional on the predicted target variable.
+%
+\item For a binary classification model, sufficiency requires both the false omission rate and false discovery rates to be balanced across protected groups.
+%
+\item Sufficiency is is a weaker model constraint compared to separation as it is often satisfied implicitly through the training process.
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Incompatibility between fairness criteria}
+
+\begin{itemize}[leftmargin=*]
+\item Independence ($Z \bot \hat{Y}$) and sufficiency ($Z \bot Y | \hat{Y}$) can only be simultaneously be satisfied if the sensitive feature $Z$, and the target variable $\hat{Y}$, are independent ($Z \bot Y$).
+%
+\item In the case that $Y$ is binary, independence ($Z \bot \hat{Y}$) and separation ($Z \bot \hat{Y} | Y$) criteria can only be simultaneously satisfied if either $\hat{Y} \bot Y$ or $Y \bot Z$.
+%
+\item Separation ($Z \bot \hat{Y} | Y$) and sufficiency ($Z \bot Y | \hat{Y}$) can only be simultaneously be satisfied if the sensitive feature, $Z$ is independent of both the target variable $Y$ and the predicted target $\hat{Y}$, that is if $Z \bot Y$ and $Z \bot \hat{Y}$.
+%
+\item In the case where $Y$ is binary, separation and sufficiency can only be satisfied simultaneously if the sensitive feature is independent of the target variable, or the model has an accuracy of 100\% ($\hat{Y}=Y$) or the model has an accuracy of 0\% ($\hat{Y}=1-Y$).
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{AIF360}
+
+\begin{itemize}[leftmargin=*]
+\item To use AIF360 to calculate fairness metrics we need our data in a Pandas DataFrame which has only numeric data types to create a \texttt{BinaryLabelDataset} object.
+%
+\item Balanced outcome fairness metrics are methods of the \href{https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.BinaryLabelDatasetMetric.html#aif360.metrics.BinaryLabelDatasetMetric}{\texttt{BinaryLabelDatasetMetric}} class.
+%
+\item Balanced error fairness metrics are methods of the \href{https://aif360.readthedocs.io/en/latest/modules/generated/aif360.metrics.ClassificationMetric.html#}{\texttt{ClassificationMetric}} class.
+%
+\item Privileged and unprivileged groups are defined in the format of a list of dictionaries. Each dictionary in the list defines a group, the key being a feature and the value being the value of the feature for members of the group. The key, value pairs in the dictionaries are joined with an intersection (AND operator) and the dictionaries in the list are joined with a union (OR operator).
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{99_BackMatter/BibStyle}

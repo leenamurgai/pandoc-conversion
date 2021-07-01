@@ -1,0 +1,71 @@
+\chapter{Performance Metrics} \label{app_Metrics}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Confusion Matrix Metrics} \label{sec_ConfMatMets}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Performance Metrics}
+
+\begin{table}[h!]
+{\centering
+\caption{Summary of performance metrics for a binary classifier}
+\label{tab_CMPerfMetrics}
+\vspace{10pt}
+\begin{tabular}{|c|c|c|c|c|}
+\cline{3-5}
+\multicolumn{2}{c|}{}                                                      & \multicolumn{2}{c|}{Ground Truth}                    &                                       \\
+\cline{3-4}
+\multicolumn{2}{c|}{}                                                      & $y=1$                       & $y=0$                  & Metric                                \\
+\hline
+\multirow{4}{*}{\rotatebox{90}{Prediction}} & \multirow{2}{*}{$\hat{y}=1$} & True Positive               & False Positive         & Positive Predictive Value\textsuperscript{a} \\
+                                            &                              &                             & Type I Error           & $\Prob(\hat{y}=y|\hat{y}=1)$          \\
+\cline{2-5}
+                                            & \multirow{2}{*}{$\hat{y}=0$} & False Negative              & True Negative          & Negative Predictive Value             \\
+                                            &                              & Type II Error               &                        & $\Prob(\hat{y}=y|\hat{y}=0)$          \\
+\hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{Metric}}                              & True Positive Rate\textsuperscript{b} & True Negative Rate     & Accuracy                              \\
+\multicolumn{2}{|c|}{}                                                     & $\Prob(\hat{y}=y|y=1)$      & $\Prob(\hat{y}=y|y=0)$ & $\Prob(\hat{y}=y)$                    \\
+\hline
+\end{tabular}\par}
+\vspace{4pt}
+\footnotesize
+\hspace{1.5em}\textsuperscript{a} Positive Predictive Value = Precision
+
+\hspace{1.5em}\textsuperscript{b} True Positive Rate = Recall
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Error Metrics}
+
+\begin{table}[h!]
+\caption{Summary of error rate types for a binary classifier}
+\label{tab_CMErrMetrics}
+\centering
+\vspace{10pt}
+\begin{tabular}{|c|c|c|c|c|}
+\cline{3-5}
+\multicolumn{2}{c|}{}                                                      & \multicolumn{2}{c|}{Ground Truth}                       &                                  \\
+\cline{3-4}
+\multicolumn{2}{c|}{}                                                      & $y=1$                      & $y=0$                      & Error Rate Type                  \\
+\hline
+\multirow{4}{*}{\rotatebox{90}{Prediction}} & \multirow{2}{*}{$\hat{y}=1$} & True Positive              & False Positive             & False Discovery Rate             \\
+                                            &                              &                            & Type I Error               & $\Prob(\hat{y}\neq y|\hat{y}=1)$ \\
+\cline{2-5}
+                                            & \multirow{2}{*}{$\hat{y}=0$} & False Negative             & True Negative              & False Omission Rate              \\
+                                            &                              & Type II Error              &                            & $\Prob(\hat{y}\neq y|\hat{y}=0)$ \\
+\hline
+\multicolumn{2}{|c|}{\multirow{2}{*}{Error Rate Type}}                     & False Negative Rate        & False Positive Rate        & Error Rate                       \\
+\multicolumn{2}{|c|}{}                                                     & $\Prob(\hat{y}\neq y|y=1)$ & $\Prob(\hat{y}\neq y|y=0)$ & $\Prob(\hat{y}\neq y)$           \\
+\hline
+\end{tabular}
+\end{table}
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsection{ROC AUC}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Accuracy Metrics}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Reconstruction Error}

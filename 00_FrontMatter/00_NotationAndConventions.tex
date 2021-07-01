@@ -1,0 +1,127 @@
+\chapter*{Notation and conventions} \label{ch_Notation}
+\addcontentsline{toc}{chapter}{Notation and conventions}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Mathematical notation}
+
+\begin{itemize}
+\item $\Prob(A)$ denotes probability of event $A$
+\item $\Ex$ denotes expectation
+\item $\forall$ means for all
+\item $|$ means such that
+\item $\in$ means a member of
+\item $\Rightarrow$ means implies
+\item $\Leftrightarrow$ means if and only if
+\item square brackets are inclusive, round brackets are not, for example,
+\[
+x \in [a, b) \quad \Leftrightarrow \quad a \leq x < b
+\]
+%\item $\cup$ denotes union or logical or
+%\item $\cap$ denotes intersection or logical and
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Typographical conventions}
+
+In this book we mostly follow mathematical typographical conventions for variables. All variables are in italic. We use:
+\begin{itemize}
+\item lowercase letters for scalar variables, e.g. $a$,
+\item uppercase letters for random variables, e.g. $X$.
+\item lowercase bold typeface letters for (column) vectors, e.g. \bsy{y},
+\item uppercase bold typeface letters for matrices and vectors of random variables, e.g. \bsy{X}.
+\end{itemize}
+Notice we have overloaded our notation slightly for matrices and random variables. If it is not clear from the context which we mean, it will be stated explicitly.
+
+We may also use tensor notation where convenient. For the elements of a matrix \bsy{X} we use $x_{ij}$ where $i$ refers to the row and $j$ to the column. Similarly for the elements of a vector \bsy{y}, we use $y_i$ where $i$ refers to the row. For the transpose we use T in the superscript so that $\boldsymbol{y}^T$ would be a row vector. We also use $\boldsymbol{x}_i$ to denote the $i$th row of the matrix \bsy{X}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Data}
+
+We will use \bsy{X} to denote the (non-sensitive) feature matrix and \bsy{Z} to denote the sensitive feature matrix (features like gender and race for example). We use \bsy{y} to denote the target variable vector (a column vector with $n$ elements, each corresponding to an sample) and $\boldsymbol{\hat{y}}(\boldsymbol{X},\boldsymbol{Z})$ to denote the predicted target variable output by our model, which is a function of the features. We shall use $\mathcal{X}$ and $\mathcal{Z}$ to denote the set of possible values our feature vectors \bsy{x} and \bsy{z} can take respectively and $\mathcal{Y}$ to denote the set of all possible values our outcome $y$ can take. When more appropriate we will use set notation to denote our set of data points which we write as $(\boldsymbol{X}, \boldsymbol{Z}, Y)=\{\boldsymbol{x}_i, \boldsymbol{z}_i, y_i\}_{i=1}^n$
+
+We shall use the same notation for our target and model output for both discrete (classification) and continuous (regression) variables. In the case where the target variable is discrete and derived from a continuous classifier (that is, one where we find the classification by applying a threshold to an underlying score), we denote the underlying score as $\boldsymbol{p}(\boldsymbol{X},\boldsymbol{Z})$ (if $y$ is a binary variable) in which case we can write,
+\[
+\hat{y}_i(\boldsymbol{X},\boldsymbol{Z})
+= H\left( p_i(\boldsymbol{X},\boldsymbol{Z}) - \tau \right) \quad
+  \forall \,\, i
+\]
+where $H(x)$ is the Heaviside step function:
+\[
+H(x) = \left\{
+\begin{array}{rl}
+1 & \textrm{if} \quad x > 0 \\
+0 & \textrm{otherwise}
+\end{array}
+\right.
+\]
+and $\tau$ is the threshold.
+
+Note that if there was a single sensitive feature (rather than multiple) we would use \bsy{z} (rather than \bsy{Z}) to denote it (since it would be a vector) and if the target was multi-class rather binary we would use \bsy{P} (rather than \bsy{p}) for the score since we would need a score for each class. If we have $n$ examples, $m_x$ non-sensitive features, and $m_z$ sensitive features then, \bsy{X} is an $n \times m_x$ matrix, \bsy{Z} is an $n \times m_z$ and \bsy{y} and \bsy{p} are vectors with $n$ elements. If \bsy{y} was a multi-class target variable with $c$ possible classes, then \bsy{P} would be an $n \times c$ matrix. 
+
+For binary sensitive and target variables \bsy{z} and \bsy{y}, we will set the advantaged group and advantageous target class to have the value one, the disadvantaged group and disadvantageous target class will then take the value zero.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Random variables}
+
+Following the typographical conventions described above, we use \bsy{X}, \bsy{Z} (or $Z$ for a single sensitive feature), $Y$, $\hat{Y}$ and $P$ (or \bsy{P} for multi-class), to denote the the random variables corresponding to our non-sensitive features, sensitive features, target variable, model predicted target variable and model probability function respectively.
+%\bsy{X}, \bsy{Z} and \bsy{P} each consist of $m_x$, $m_z$ and $c-1$ random variables.
+
+\subsection*{Special values}
+
+We will occasionally use $+$ or $-$ in the subscript of a binary variable to respectively denote the advantaged or disadvantaged outcome (or class). For example,
+\begin{itemize}
+\item $Y = y_+$ is the advantageous outcome
+\item $Y = y_-$ is the disadvantageous outcome
+\item $Z = z_+$ is the advantaged (privileged) class
+\item $Z = z_-$ is the disadvantaged (unprivileged) class
+\end{itemize}
+
+For brevity and readability, we shall (on occasion) omit the random variable in the event descriptor of a probability term (if it is obvious which random variable we are referring to). For example, for a binary target variable we might write,
+\[
+\Prob(Y=y_+) = \Prob(y_+).
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Probability density functions}
+
+As a shorthand we will use $f_X$ to denote the probability density function for the random variable $X$. Note then that for a discrete random variable $X$, we can write,
+\[
+\Prob(X=x) = f_{X}(x),
+\]
+while for a continuous random variable we have
+\[
+\Prob(a<X<b) = \int_a^b f_X(x) \, \dee x.
+\]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Expectations}
+
+We denote the expectation as,
+\[
+\Ex[g(X)] = \sum_{x\in\mathcal{X}} g(x)f_X(x) = \int_{x\in\mathcal{X}} g(x)f_X(x) \, \dee x
+\]
+where we take the expectation of a multi variate function, we will use a subscript to indicate the variable the expectation is taken over, e.g. $\Ex_X[g(X,Y)]$.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section*{Naming conventions}
+
+\begin{itemize}
+\item $n$ for number of examples or data points
+\item $d$ for differences
+\item $r$ for rates
+\end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section*{Confusion matrix notation}
+
+%\begin{itemize}
+%\item $n_{t+} =$ number of true positives
+%\item $n_{f+} =$ number of false positives
+%\item $n_{f-} =$ number of false negatives
+%\item $n_{t-} =$ number of true negatives
+%\item $r_{t+} =$ true positive rate
+%\item $r_{f+} =$ false positive rate
+%\item $r_{f-} =$ false negative rate
+%\item $r_{t-} =$ true negative rate
+%\end{itemize}
+

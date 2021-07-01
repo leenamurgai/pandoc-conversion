@@ -1,0 +1,75 @@
+# On the comandline
+# pandoc --defaults pandoc/options.yml
+
+from: latex
+to: html5
+
+output-file: MBML.html
+input-file: MBML.tex
+
+template: pandoc/tufte/tufte.html5
+standalone: true
+
+# metadata values specified here are parsed as literal string text, not markdown:
+metadata:
+#  author: Dr Leena Murgai
+#  title: Mitigating Bias in Machine Learning
+  date: 28 June 2021
+  link-citations: true
+  reference-section-title: References
+
+css:
+- pandoc/tufte/tufte.css
+- pandoc/css/pandoc.css
+- pandoc/css/tweak.css
+
+# Note that these take files, not their contents:
+#include-before-body: []
+#include-after-body: [99_BackMatter/References.html]
+#include-in-header: [pandoc/css/includes.css]
+resource-path: ["pandoc/csl/" ]
+
+# Turn on built-in citation processing.  Note that if you need
+# control over when the citeproc processing is done relative
+# to other filters, you should instead use `citeproc` in the
+# list of `filters` (see below).
+citeproc: true
+bibliography: 99_BackMatter/References.bib
+
+csl: ieee
+
+# Filters will be assumed to be Lua filters if they have
+# the .lua extension, and json filters otherwise.  But
+# the filter type can also be specified explicitly, as shown.
+# Filters are run in the order specified.
+# To include the built-in citeproc filter, use either `citeproc`
+# or `{type: citeproc}`.
+filters:
+- pandoc-sidenote    # https://github.com/jez/pandoc-sidenote
+
+# filters tried and failed
+# exited with error
+# - pandoc-fignos    # https://github.com/tomduck/pandoc-xnos
+# - pandoc-tablenos  # https://github.com/tomduck/pandoc-xnos
+# Messed up my beutiful and working references
+# - pandoc-crossref  # https://github.com/lierdakil/pandoc-crossref
+
+  
+data-dir: /Users/<your_username>/Library/Python/3.8/bin
+
+# ERROR, WARNING, or INFO
+log-file: pandoc/log.json
+
+# citeproc, natbib, or biblatex. This only affects LaTeX
+# output.  If you want to use citeproc to format citations,
+# you should also set 'citeproc: true' (see above).
+#cite-method: natbib
+
+table-of-contents: true
+toc-depth: 2
+number-sections: true
+#listings: false
+section-divs: true
+
+html-math-method:
+  method: katex

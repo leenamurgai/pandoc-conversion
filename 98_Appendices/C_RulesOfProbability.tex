@@ -1,0 +1,105 @@
+\chapter{Rules of probability}\label{app_ProbRules}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Discrete random variables}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sum rule}
+
+\begin{equation} \label{eqn_SumRuleD}
+\Prob(x) = \sum_{y\in\mathcal{Y}} \Prob(x,y)
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Product rule}
+
+\begin{equation} \label{eqn_ProductRuleD}
+\Prob(x,y) = \Prob(y|x) \Prob(x)
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bayes' rule}
+
+\begin{equation} \label{eqn_BayesRuleD}
+\Prob(y|x) = \frac{\Prob(x|y)\Prob(y)}{\Prob(x)}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Independence}
+
+For $X \bot Y$
+\begin{align}
+\Prob(x,y)   & = \Prob(x) \Prob(y) \label{eqn_Indep1D} \\
+\Prob(y|x)   & = \Prob(y)          \label{eqn_Indep2D}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conditional Independence}
+
+For $X \bot Y | Z$ (or equivalently $Y \bot X | Z$ by symmetry)
+\begin{equation} \label{eqn_CondIndep1D}
+\Prob(x|y,z) = \Prob(x|z)
+\end{equation}
+and by symmetry,
+\begin{equation} \label{eqn_CondIndep2D}
+\Prob(y|x,z) = \Prob(y|z)
+\end{equation}
+Using the product rule followed by \ref{eqn_CondIndep2D} we also have,
+\begin{align}
+\Prob(x,y|z)       & = \Prob(y|x,z)\Prob(x|z) \nonumber \\
+                   & = \Prob(y|z)\Prob(x|z)   \label{eqn_CondIndep3D}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Continuous random variables}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sum rule}
+
+\begin{equation} \label{eqn_SumRuleC}
+f_{X}(X) = \int f_{X,Y}(x,y) \, \dee y
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Product rule}
+
+\begin{equation} \label{eqn_ProductRuleC}
+f_{X,Y}(x,y) = f_{Y|X}(x,y) f_X(x)
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Bayes' rule}
+
+\begin{equation} \label{eqn_BayesRuleC}
+f_{Y|X}(x,y) = \frac{f_{X|Y}(x,y) f_Y(y)}{f_X(x)}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Independence}
+
+For $X \bot Y$
+\begin{align}
+f_{X,Y}(x,y) & = f_X(x)f_Y(y) \label{eqn_Indep1C} \\
+f_{Y|X}(x,y) & = f_Y(y)       \label{eqn_Indep2C}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conditional Independence}
+
+For $X \bot Y | Z$ (or equivalently $Y \bot X | Z$ by symmetry)
+\begin{equation} \label{eqn_CondIndep1C}
+f_{X|Y,Z}(x,y,z) = f_{X|Z}(x,z)
+\end{equation}
+and by symmetry,
+\begin{equation} \label{eqn_CondIndep2C}
+f_{Y|X,Z}(x,y,z) = f_{Y|Z}(y,z)
+\end{equation}
+Using the product rule followed by \ref{eqn_CondIndep2C} we also have,
+\begin{align}
+f_{X,Y|Z}(x,y,z) & = f_{Y|X,Z}(x,y,z)f_{X|Z}(x,z) \nonumber \\
+                 & = f_{Y|Z}(y,z)f_{X|Z}(x,y)  \label{eqn_CondIndep3C}
+\end{align}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

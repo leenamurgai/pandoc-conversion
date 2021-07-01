@@ -1,0 +1,23 @@
+# Google Drive crap
+
+*Icon*
+
+# LaTeX intermediary files
+
+*.aux
+*.boc
+*.idx
+*.log
+*.synctex.gz
+*.toc
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.out
+*.bbl
+*.blg
+
+# Separated references for later
+
+*_References.bib

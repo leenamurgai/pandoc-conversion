@@ -1,0 +1,3549 @@
+[
+    {
+        "type": "LoadedResource",
+        "verbosity": "INFO",
+        "for": "pandoc/tufte/tufte.html5",
+        "from": "pandoc/tufte/tufte.html5"
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "fullpage.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 2,
+        "column": 22
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "footmisc.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 3,
+        "column": 22
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "hyperref.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 4,
+        "column": 22
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "url.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 5,
+        "column": 17
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "natbib.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 8,
+        "column": 32
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "chapterbib.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 9,
+        "column": 24
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "tocbibind.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 11,
+        "column": 31
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "amsfonts.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 14,
+        "column": 22
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "amsmath.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 15,
+        "column": 21
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "amstext.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 16,
+        "column": 21
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "dsfont.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 17,
+        "column": 20
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "bbm.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 18,
+        "column": 17
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "wasysym.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 21,
+        "column": 21
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "multirow.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 22,
+        "column": 22
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "rotating.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 24,
+        "column": 36
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "bigstrut.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 26,
+        "column": 22
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "enumitem.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 33,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\setlist{itemsep=0mm}",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 34,
+        "column": 22
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "fontenc.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 44,
+        "column": 25
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "listings.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 45,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\lstset{basicstyle = \\ttfamily}",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 46,
+        "column": 32
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "xcolor.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 51,
+        "column": 20
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "mdframed.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 52,
+        "column": 22
+    },
+    {
+        "type": "CouldNotLoadIncludeFile",
+        "verbosity": "INFO",
+        "path": "tcolorbox.sty",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 53,
+        "column": 23
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\definecolor{mutedltyellow}{RGB}{247, 247, 225}",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 71,
+        "column": 48
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\definecolor{muteddkblue}{RGB}{53, 111, 155}",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 72,
+        "column": 45
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\newtcolorbox{chapsumm}{\n    %toptitle = 6pt,\n    %title = \\large\\textbf{This chapter at a glance},\n    %coltitle = muteddkblue,\n    %colbacktitle = mutedltyellow,\n    colframe = mutedltyellow,\n    colback = mutedltyellow,\n    sharp corners = all,\n    left skip = 0.1\\textwidth,\n    right skip = 0.1\\textwidth,\n    after skip = 1cm}",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 87,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\newtcolorbox{lookbox}{\n    %toptitle = 6pt,\n    %title = \\textbf{{#1}},\n    %coltitle = muteddkblue,\n    %colbacktitle = mutedltyellow,\n    colframe = mutedltyellow,\n    colback = mutedltyellow,\n    sharp corners = all,\n    before skip = \\baselineskip,\n    after skip = \\baselineskip}",
+        "source": "00_FrontMatter/00_PackagesMacros.tex",
+        "line": 98,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\today",
+        "source": "MBML.tex",
+        "line": 9,
+        "column": 13
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\frontmatter",
+        "source": "MBML.tex",
+        "line": 13,
+        "column": 13
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\maketitle",
+        "source": "MBML.tex",
+        "line": 15,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\tableofcontents",
+        "source": "MBML.tex",
+        "line": 16,
+        "column": 17
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\listoffigures",
+        "source": "MBML.tex",
+        "line": 17,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\listoftables",
+        "source": "MBML.tex",
+        "line": 18,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\addcontentsline{toc}{chapter}{Notation and conventions}",
+        "source": "00_FrontMatter/00_NotationAndConventions.tex",
+        "line": 2,
+        "column": 57
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\mainmatter",
+        "source": "MBML.tex",
+        "line": 27,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\large",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\large",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 4,
+        "column": 35
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{chapsumm}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 3,
+        "column": 17
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{chapsumm}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 12,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\noindent",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 14,
+        "column": 10
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\newline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 36,
+        "column": 9
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 88,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 88,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 88,
+        "column": 29
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 87,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 90,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 119,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 122,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 162,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 162,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 165,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{4pt}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 190,
+        "column": 13
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\footnotesize",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 191,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 192,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 198,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 201,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 250,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 250,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 250,
+        "column": 30
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 249,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 252,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 301,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 304,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 322,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 325,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 343,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 352,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 365,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 380,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 383,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 386,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 386,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 386,
+        "column": 24
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 386,
+        "column": 37
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 388,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 388,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 388,
+        "column": 24
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 388,
+        "column": 37
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 391,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 391,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 391,
+        "column": 24
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 391,
+        "column": 37
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 393,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 393,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 393,
+        "column": 24
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 393,
+        "column": 37
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 490,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 514,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 514,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 514,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 513,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 516,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 545,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\addcontentsline{toc}{section}{Summary}",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 575,
+        "column": 40
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 598,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "01_MotivationAndContext/01_MotivationAndContext.tex",
+        "line": 601,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\bibliographystyle{plain}",
+        "source": "99_BackMatter/BibStyle.tex",
+        "line": 1,
+        "column": 26
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\large",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\large",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 4,
+        "column": 35
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{chapsumm}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 3,
+        "column": 17
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{chapsumm}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 11,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\noindent",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 13,
+        "column": 10
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 25,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 56,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 56,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 56,
+        "column": 46
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 55,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 58,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 81,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 90,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 93,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 122,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\newline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 139,
+        "column": 9
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 173,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 174,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 181,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 183,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 185,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 187,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 189,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 191,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 193,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 195,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 197,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 199,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 204,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 206,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 208,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 218,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 228,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 240,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\addcontentsline{toc}{section}{Summary}",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 521,
+        "column": 40
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hexagon",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 555,
+        "column": 31
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 579,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 590,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 620,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hexagon",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 639,
+        "column": 31
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hexagon",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 659,
+        "column": 31
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hexagon",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 677,
+        "column": 31
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hexagon",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 688,
+        "column": 31
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hexagon",
+        "source": "02_EthicalDevelopment/02_EthicalDevelopment.tex",
+        "line": 701,
+        "column": 31
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\bibliographystyle{plain}",
+        "source": "99_BackMatter/BibStyle.tex",
+        "line": 1,
+        "column": 26
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\large",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\large",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 4,
+        "column": 35
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{chapsumm}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 3,
+        "column": 17
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{chapsumm}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 10,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\noindent",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 12,
+        "column": 10
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\pageref{ch_Notation}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 20,
+        "column": 335
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 30,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 33,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 74,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 74,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 74,
+        "column": 47
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 73,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 82,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 101,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 104,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 134,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 134,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 134,
+        "column": 58
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 133,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 140,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 164,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 164,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 164,
+        "column": 31
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 163,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 166,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 211,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 211,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 211,
+        "column": 58
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 210,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 219,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 260,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 260,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 260,
+        "column": 54
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\noindent",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 267,
+        "column": 10
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 259,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 273,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 278,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 278,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 278,
+        "column": 48
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 277,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 280,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 309,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 309,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 312,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{4pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 328,
+        "column": 13
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\footnotesize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 329,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 330,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 332,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 337,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 337,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 337,
+        "column": 30
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 336,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 339,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 383,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 386,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 405,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 440,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 440,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 440,
+        "column": 49
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 439,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 442,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 450,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 459,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 459,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 459,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 458,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 461,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 466,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 466,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 466,
+        "column": 35
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 465,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 472,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 555,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 555,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 558,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{4pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 572,
+        "column": 13
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\footnotesize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 573,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 574,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 593,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 593,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 593,
+        "column": 42
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 592,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 595,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 618,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 618,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 618,
+        "column": 41
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 617,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 620,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 662,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 662,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 662,
+        "column": 42
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 661,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 664,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 685,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 685,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 685,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 684,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 687,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 700,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 700,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 700,
+        "column": 38
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 699,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 702,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 715,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 715,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 715,
+        "column": 50
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 714,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 717,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\addcontentsline{toc}{section}{Summary}",
+        "source": "03_GroupFairness/03_GroupFairness.tex",
+        "line": 730,
+        "column": 40
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\bibliographystyle{plain}",
+        "source": "99_BackMatter/BibStyle.tex",
+        "line": 1,
+        "column": 26
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\large",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\large",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 4,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 4,
+        "column": 35
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{chapsumm}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 3,
+        "column": 17
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{chapsumm}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 11,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\noindent",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 13,
+        "column": 10
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 33,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 33,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 33,
+        "column": 44
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 32,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 39,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 46,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 55,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 64,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 64,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 64,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 66,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 63,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 72,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 76,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 83,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 100,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 100,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 100,
+        "column": 38
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 99,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 102,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 133,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 133,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 133,
+        "column": 37
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{0.05\\textwidth}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 141,
+        "column": 38
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{-8pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 143,
+        "column": 106
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 131,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 147,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{-\\baselineskip}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 148,
+        "column": 36
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\noindent ",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 150,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 208,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 209,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 208,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 209,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 213,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 220,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 222,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 225,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{4pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 233,
+        "column": 13
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\footnotesize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 234,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 235,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 237,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 239,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 289,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 289,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 289,
+        "column": 60
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 288,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 291,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 304,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 313,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 313,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 313,
+        "column": 54
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 312,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 315,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 322,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 394,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 394,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 394,
+        "column": 41
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 393,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 396,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 401,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 401,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 404,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{4pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 424,
+        "column": 13
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\footnotesize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 425,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 426,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 439,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 439,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 442,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{4pt}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 460,
+        "column": 13
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\footnotesize",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 461,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 462,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 486,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\addcontentsline{toc}{section}{Summary}",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 497,
+        "column": 40
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hexagon",
+        "source": "04_IndividualFairness/04_IndividualFairness.tex",
+        "line": 529,
+        "column": 31
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\bibliographystyle{plain}",
+        "source": "99_BackMatter/BibStyle.tex",
+        "line": 1,
+        "column": 26
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\appendix",
+        "source": "MBML.tex",
+        "line": 39,
+        "column": 10
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\addcontentsline{toc}{chapter}{Appendices}",
+        "source": "MBML.tex",
+        "line": 41,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "98_Appendices/A_InstallingAIF360.tex",
+        "line": 3,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\newline",
+        "source": "98_Appendices/A_InstallingAIF360.tex",
+        "line": 6,
+        "column": 9
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\newline",
+        "source": "98_Appendices/A_InstallingAIF360.tex",
+        "line": 31,
+        "column": 9
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 10,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 10,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 13,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 15,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 16,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 16,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 15,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 16,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 16,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 17,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 18,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 18,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\rotatebox",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 20,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\rotatebox",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 20,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 22,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{4pt}",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 30,
+        "column": 13
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\footnotesize",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 31,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 32,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\hspace{1.5em}",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 34,
+        "column": 15
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 43,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 44,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 46,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 47,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 47,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 46,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 47,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 47,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 48,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 49,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 49,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\rotatebox",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 51,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\rotatebox",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 51,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/B_PerformanceMetrics.tex",
+        "line": 53,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 16,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 16,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 16,
+        "column": 47
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 15,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 24,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 50,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 50,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 50,
+        "column": 58
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 50,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 50,
+        "column": 58
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 49,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 54,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 94,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 94,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 94,
+        "column": 31
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 93,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 96,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 115,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 117,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 137,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 137,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 137,
+        "column": 38
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 136,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 139,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{10pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 145,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\centering",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 147,
+        "column": 11
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 149,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 150,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 150,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 149,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 150,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 150,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 151,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 152,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\multicolumn",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 152,
+        "column": 22
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\rotatebox",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 154,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\rotatebox",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 154,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 156,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\cline",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 171,
+        "column": 12
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 188,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 188,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 188,
+        "column": 50
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 187,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 190,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 233,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 233,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 233,
+        "column": 43
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "[leftmargin=*]",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 235,
+        "column": 32
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 232,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 241,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 268,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 268,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 268,
+        "column": 60
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 267,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 270,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\color{muteddkblue}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 376,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\normalsize",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 376,
+        "column": 1
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\vspace{5pt}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 376,
+        "column": 54
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\begin{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 375,
+        "column": 16
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\end{lookbox}",
+        "source": "98_Appendices/Z_SolutionsToExercises.tex",
+        "line": 378,
+        "column": 14
+    },
+    {
+        "type": "SkippedContent",
+        "verbosity": "INFO",
+        "contents": "\\backmatter",
+        "source": "MBML.tex",
+        "line": 49,
+        "column": 12
+    },
+    {
+        "type": "LoadedResource",
+        "verbosity": "INFO",
+        "for": "ieee.csl",
+        "from": "pandoc/csl/ieee.csl"
+    },
+    {
+        "type": "LoadedResource",
+        "verbosity": "INFO",
+        "for": "99_BackMatter/References.bib",
+        "from": "99_BackMatter/References.bib"
+    },
+    {
+        "type": "CiteprocWarning",
+        "verbosity": "WARNING",
+        "message": "Citation with no printed form: "
+    },
+    {
+        "type": "NoLangSpecified",
+        "verbosity": "INFO"
+    }
+]

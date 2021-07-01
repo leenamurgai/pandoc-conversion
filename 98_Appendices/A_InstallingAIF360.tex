@@ -1,0 +1,43 @@
+\chapter{Installing AIF360}\label{app_Install}
+
+\begin{enumerate}[leftmargin=*]
+\item In this book we will use Python in Jupyter notebooks from the \href{https://www.anaconda.com//products/individual}{Anaconda Python distribution platform}. If you don't already have it download and install it.
+%
+\newline
+%
+\item Create an environment named \texttt{mbml}. Using the command line interface (CLI):
+\begin{lstlisting}
+\$ conda create --name mbml python=3.7
+\end{lstlisting}
+%
+\item Activate your new environment:
+\begin{lstlisting}
+$ conda activate mbml
+\end{lstlisting}
+%
+%\item Install AIF360:
+%\begin{lstlisting}
+%$ pip install 'aif360[all]'
+%\end{lstlisting}
+%
+\item This book is a work in progress. As part of analysing the metrics and methods it uses code that is not yet available with the library\footnote{If you're interested, here is the \href{https://github.com/Trusted-AI/AIF360/pull/214}{open pull request}.}. Once it is merged, you will just be able to just pip install the aif360 library. Until then you must clone this \href{https://github.com/leenamurgai/AIF360}{fork of AIF360}:
+%
+\begin{lstlisting}
+$ git clone https://github.com/leenamurgai/AIF360.git
+\end{lstlisting}
+%
+\item Download the notebook \texttt{mbml\_german.ipynb} from \href{https://git.manning.com/agileauthor/murgai/-/blob/master/code/mbml\_german.ipynb}{Manning's GitLab repository} and save it in the "AIF360/examples" folder.
+%
+\newline
+%
+\item You should now be able to open and run the notebook from the CLI as you usually would:
+\begin{lstlisting}
+$ jupyter notebook mbml_german.ipynb
+\end{lstlisting}
+\end{enumerate}
+
+
+
+
+
+

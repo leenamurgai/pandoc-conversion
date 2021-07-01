@@ -1,0 +1,220 @@
+\chapter{Solutions to exercises}\label{app_Solutions}
+
+%\setcounter{section}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Chapter 3 Exercises}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Balanced outcomes}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lookbox}
+\lbtitle{Exercise: Normalised prejudice index}
+Write a function that takes two arrays $y$ and $z$ of categorical features and returns the normalised prejudice index.
+\begin{enumerate}
+\item Compute the probability distributions $\Prob(y)$, $\Prob(z)$ and $\Prob(y,z)$. Note that these can be thought of as the frequency with which each event occurs.
+\item Compute the entropies $H(y)$ and $H(z)$ shown in equation (\ref{eqn_entropy}) and use these to compite the normalising factor, $\sqrt{H(y)H(z)}$.
+\item Compute the mutual information $I(z,y)$ shown in equation (\ref{eqn_MutualInfo}) and divide by the normalising factor.
+\end{enumerate}
+You can test your implementation against scikit-learn's:\\ \href{https://scikit-learn.org/stable/modules/generated/sklearn.metrics.normalized\_mutual\_info\_score.html}{sklearn.metrics.normalized\_mutual\_info\_score}.
+\end{lookbox}
+
+\begin{lstlisting}[caption={Calculating the normalised prejudice index}, label=clt_Ex-npi]
+# Import the necessary classes
+import pandas as pd
+import scipy.stats as ss
+
+def normalised_mutual_information(x, y):
+    """normalised mutual information between x and y"""
+    
+    # Compute the probability distributions
+    px   = x.value_counts(normalize=True)
+    py   = y.value_counts(normalize=True)
+    pxy  = pd.Series(zip(x,y)).value_counts(normalize=True)
+    
+    # Compute the normalising factor
+    norm = math.sqrt( ss.entropy(px) * ss.entropy(py)  )
+    
+    # Compute mutual information, divide by the normalising factor
+    # and return the result
+    return sum([p * math.log(p / (px[xy[0]] * py[xy[1]]))
+                for xy, p in p_xy.items()]) / norm
+\end{lstlisting}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lookbox}
+\lbtitle{Exercise: Statistical parity difference maximum} Show that \[
+d_{\max} = \min\left\{ \frac{\Prob(\hat{Y}=1)}{\Prob(Z=1)},
+                       \frac{\Prob(\hat{Y}=0)}{\Prob(Z=0)} \right\}.
+\]
+\end{lookbox}
+
+We can write statistical parity difference as
+\[
+d = \Prob(\hat{Y}=1 | Z=1) - \Prob(\hat{Y}=1 | Z=0).
+\]
+Let's rewrite this with advantaged and disadvantaged outcomes and groups to make it more concrete,
+\[
+d = \Prob(y^+|z^+) - \Prob(y^+|z^-) \\
+  = \frac{\Prob(y^+, z^+)}{\Prob(z^+)} - \frac{\Prob(y^+, z^-)}{\Prob(z^-)}
+  \leq \frac{\Prob(y^+)}{\Prob(z^+)}.
+\]
+This maximal value occurs when 
+\[
+\Prob(y^+, z^+) = \Prob(y^+) \quad \text{and} \quad \Prob(y^+, z^-)=0;
+\]
+that is, when all members of the advantaged class, receive the advantaged outcome. We can also write,
+\begin{align*}
+d = \Prob(y^+|z^+) - \Prob(y^+|z^-) 
+  & = \Prob(y^-|z^-) - \Prob(y^-|z^+) \\
+  & = \frac{\Prob(y^-, z^-)}{\Prob(z^-)}
+    - \frac{\Prob(y^-, z^+)}{\Prob(z^+)} \leq \frac{\Prob(y^-)}{\Prob(z^-)}.
+\end{align*}
+Here the maximal value occurs when 
+\[
+\Prob(y^-, z^-) = \Prob(y^-) \quad \text{and} \quad \Prob(y^-, z^+)=0;
+\]
+that is, when all members of the disadvantaged class, receive the disadvantaged outcome. Thus,
+\[
+d_{max} = \min\left\{ \frac{\Prob(y^+)}{\Prob(z^+)},
+                      \frac{\Prob(y^-)}{\Prob(z^-)} \right\}.
+\]
+Note that,
+\[
+\frac{\Prob(y^+)}{\Prob(z^+)} = \frac{\Prob(y^-)}{\Prob(z^-)} \quad \Leftrightarrow \quad \Prob(y_+) = \Prob(z_+);
+\]
+that is, when all members of the advantaged class, receive the advantaged outcome and all members of the disadvantaged class, receive the disadvantaged outcome.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lookbox}
+\lbtitle{Exercise: Odds ratio}
+Show that the odds ratio is always greater than or equal to one in the case where $\hat{Y}=1$ in the advantaged outcome and $Z=1$ is the privileged group.
+\end{lookbox}
+
+\[
+r_{\text{odds}}
+= \frac{\Prob(\hat{Y}=1 | Z=1)\Prob(\hat{Y}=0 | Z=0)}
+       {\Prob(\hat{Y}=0 | Z=1)\Prob(\hat{Y}=1 | Z=0)}.
+\]
+Let $\hat{Y}=1$ be the advantaged outcome and $Z=1$ be the privileged group, then we can write,
+\[
+r_{\text{odds}} = \frac{\Prob(\hat{y}_+ | z_+)\Prob(\hat{y}_- | z_-)}
+                       {\Prob(\hat{y}_- | z_+)\Prob(\hat{y}_+ | z_-)}
+\]
+In this case, since $\Prob(\hat{y}_+ | z_+)>\Prob(\hat{y}_+ | z_-)$ and $\Prob(\hat{y}_- | z_-)>\Prob(\hat{y}_- | z_+)$, the numerator is always greater than the denominator and the odds ratio will be greater than one.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Balanced errors}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lookbox}{Exercise: Sufficiency}
+Show that sufficiency is satisfied if and only if the false omission rate and false discovery rate are equal for all groups.
+\end{lookbox}
+
+Sufficiency implies
+\[
+\Prob(y|\hat{y}, z) = \Prob(y|\hat{y}).
+\]
+For the simplest case of a binary classifier where we have a single sensitive binary feature. We can write this requirement as two conditions,
+\begin{align*}
+\Prob(Y=1 | Z=1, \hat{Y}=1) & = \Prob(Y=1 | Z=0, \hat{Y}=1), \\
+\Prob(Y=1 | Z=1, \hat{Y}=0) & = \Prob(Y=1 | Z=0, \hat{Y}=0).
+\end{align*}
+Recall that $\Prob(Y=1 | \hat{Y}=1)$ is the positive predictive value ($PPV$) of the classifier and $\Prob(Y=1 | \hat{Y}=0)$ is the false omission rate ($FOR$). We see then that sufficiency requires the positive predictive value to be the same for all values of the sensitive feature and the false omission rate to be the same for all values of the sensitive feature. Note that the positive predictive value is balanced if and only if the false discovery rate is balanced, so thinking in terms of error metrics only, separation requires the false discovery and false omission rates to be balanced.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Incompatibility of fairness criteria}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsubsection{Separation versus Sufficiency}
+
+\begin{lookbox}
+\lbtitle{Exercise: Predictive values}
+Prove the results given in equations (\ref{eqn_PPV}) and (\ref{eqn_NPV}).
+\end{lookbox}
+
+We want to write the positive and negative predictive values ($PPV$ and $NPV$ respectively) in terms of the  true positive, false positive and acceptance rates ($TPR$, $FPR$ and $p$ respectively). We start by looking at some relationships between the elements of a confusion matrix shown in table \ref{tab_ConfMax}.
+% 
+\begin{table}[h!]
+\caption{Confusion matrix}
+\vspace{10pt}
+\label{tab_ConfMax}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\cline{3-4}
+\multicolumn{2}{c|}{}                                                      & \multicolumn{2}{c|}{Ground Truth} & \multicolumn{1}{c}{} \\
+\cline{3-4}
+\multicolumn{2}{c|}{}                                                      & $y=1$          & $y=0$            & \multicolumn{1}{c}{} \\
+\hline
+\multirow{4}{*}{\rotatebox{90}{Prediction}} & \multirow{2}{*}{$\hat{y}=1$} & True Positive  & False Positive   & \multirow{2}{*}{\(\displaystyle PPV = \frac{TP}{TP+FP} \)} \\
+                                            &                              & $TP$           & $FP$             & \\
+\cline{2-5}
+                                            & \multirow{2}{*}{$\hat{y}=0$} & False Negative & True Negative    & \multirow{2}{*}{\(\displaystyle NPV = \frac{TN}{FN+TN} \)} \\
+                                            &                              & $FN$           & $TN$             & \\
+\hline
+\multicolumn{2}{c|}{} & 
+{$\begin{aligned}
+  TPR & = \frac{TP}{TP+FN} \\
+1-TPR & = \frac{FN}{TP+FN} \\
+    p & = \frac{TP+FN}{n}  \end{aligned}$
+\rule[-12mm]{0mm}{25.5mm}} &
+{$\begin{aligned}
+  FPR & = \frac{FP}{FP+TN} \\
+1-FPR & = \frac{TN}{FP+TN} \\
+  1-p & = \frac{FP+TN}{n}  \end{aligned}$} &
+\multicolumn{1}{c}{} \\
+\cline{3-4}
+\end{tabular}
+\end{table}
+%
+where $n= TP+FP+FN+TN$ denotes the total number of data points. Using the equations in the final row of the table we can write,
+\begin{align*}
+    p TPR & = \frac{TP}{n}, &     (1-p) FPR & = \frac{FP}{n}, \\
+p (1-TPR) & = \frac{FN}{n}, & (1-p) (1-FPR) & = \frac{TP}{n}.
+\end{align*}
+Finally, we can substitute these into our expressions for $PPV$ and $NPV$ in the right hand column of table \ref{tab_ConfMax} to find the relationships in equations (\ref{eqn_PPV}) and (\ref{eqn_NPV}).
+\begin{align*}
+PPV & = \frac{p TPR}{p TPR + (1-p)FPR} \\
+NPV & = \frac{(1-p)(1-FPR)}{p(1-TPR) + (1-p)(1-FPR)}.
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{lookbox}
+\lbtitle{Exercise: Separation versus sufficiency}
+Show that for separation and sufficiency to hold equations (\ref{eqn_PRT1}) and (\ref{eqn_PRT2}) must hold for  for any pair of groups $Z=a$ and $Z=b$.
+\end{lookbox}
+
+For separation to hold the true positive and false positive rates must be constant across all values of the sensitive features. For sufficiency to hold the positive and negative predictive values must be constant across all values of the sensitive features. For brevity we shal use a subscript to denote conditioning on $Z$, for example $p_z=\Prob(Y=1|Z=z)$. For both separation and sufficiency to hold, we must have
+%
+\begin{align}
+& PPV_a  = PPV_b \nonumber \\
+& \Leftrightarrow\quad \frac{p_a TPR}{p_a TPR + (1-p_a)FPR}
+                     = \frac{p_b TPR}{p_b TPR + (1-p_b)FPR} \nonumber \\
+& \Leftrightarrow\quad p_b TPR[p_a TPR + (1-p_a)FPR]
+                     = p_a TPR[p_b TPR + (1-p_b)FPR] \nonumber \\
+&\Leftrightarrow\quad p_b TPR(1-p_a)FPR
+                    = p_a TPR(1-p_b)FPR \nonumber \\
+&\Leftrightarrow\quad TPR(p_b-p_a)FPR = 0 \label{eqn_PPV-SepSuf}
+\end{align}
+%
+Similarly, we must also have,
+%
+\begin{align}
+& NPV_a = NPV_b \nonumber \\
+& \Leftrightarrow\quad
+  \frac{(1-p_a)(1-FPR)}{p_a(1-TPR) + (1-p_a)(1-FPR)}
+= \frac{(1-p_b)(1-FPR)}{p_b(1-TPR) + (1-p_b)(1-FPR)} \nonumber \\
+& \Leftrightarrow\quad
+           (1-p_b)(1-FPR)[p_a(1-TPR) + (1-p_a)(1-FPR)] \nonumber \\
+& \qquad = (1-p_a)(1-FPR)[p_b(1-TPR) + (1-p_b)(1-FPR)] \nonumber \\
+& \Leftrightarrow\quad
+  (1-p_b)(1-FPR)p_a(1-TPR)
+= (1-p_a)(1-FPR)p_b(1-TPR) \nonumber \\
+& \Leftrightarrow\quad
+  (1-FPR)(p_b-p_a)(1-TPR) = 0 \label{eqn_NPV-SepSuf}
+\end{align}
