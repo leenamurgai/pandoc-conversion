@@ -14,6 +14,42 @@ td {
   white-space: nowrap;
 }
 table {
-  width: 90%;
+  min-width: 55%;
   overflow-x: visible;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+h5 {
+  font-size: 1.4em;
+}
+h4 {
+  font-size: 1.6em;
+}
+
+
+.chapsumm, .lookbox {
+  background-color: rgb(247, 247, 225);
+  padding: 10px;
+  width: 40%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+figure img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+li p {
+  margin: 0px;
+}
+pre  {
+  width: 100% !important;
+  white-space: normal;
+}
+pre code {
+  white-space: normal;
 }
