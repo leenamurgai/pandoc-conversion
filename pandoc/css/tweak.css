@@ -21,3 +21,11 @@ table {
 h5 {
   font-size: 1.5em;
 }
+
+.chapsumm, .lookbox {
+  background-color: rgb(247, 247, 225);
+  padding: 10px;
+  width: 40%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
