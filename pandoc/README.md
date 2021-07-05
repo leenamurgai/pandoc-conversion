@@ -1,5 +1,5 @@
 # Pandoc conversion notes
-
+# modified for test commit
 ## 1. Pandoc conversion command
 
 Edit ```data-dir``` in ```pandoc/options.yml```. Something like:
