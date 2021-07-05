@@ -17,3 +17,7 @@ table {
   width: 90%;
   overflow-x: visible;
 }
+
+h5 {
+  font-size: 1.5em;
+}
