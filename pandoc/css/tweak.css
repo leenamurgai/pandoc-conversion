@@ -14,10 +14,13 @@ td {
   white-space: nowrap;
 }
 table {
-  width: 90%;
+  min-width: 55%;
   overflow-x: visible;
 }
-
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
 h5 {
   font-size: 1.5em;
 }
