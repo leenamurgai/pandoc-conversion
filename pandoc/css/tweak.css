@@ -22,8 +22,12 @@ table, th, td {
   border-collapse: collapse;
 }
 h5 {
-  font-size: 1.5em;
+  font-size: 1.4em;
 }
+h4 {
+  font-size: 1.6em;
+}
+
 
 .chapsumm, .lookbox {
   background-color: rgb(247, 247, 225);
