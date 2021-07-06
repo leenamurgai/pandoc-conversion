@@ -46,3 +46,10 @@ figure img {
 li p {
   margin: 0px;
 }
+pre  {
+  width: 100% !important;
+  white-space: normal;
+}
+pre code {
+  white-space: normal;
+}
